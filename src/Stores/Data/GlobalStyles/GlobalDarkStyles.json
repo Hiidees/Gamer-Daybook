@@ -1,6 +1,3 @@
 {
-  "body": {
-    "backgroundImage": "url(/black.jpg )",
-    "backgroundRepeat": "no-repeat"
-  }
+  "body": {}
 }

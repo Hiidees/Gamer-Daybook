@@ -1,5 +1,11 @@
 {
   "palette": {
     "mode": "dark"
+  },
+  "typography": {
+    "allVariants": {
+      "fontFamily": "Syne Mono",
+      "fontSize": 25
+    }
   }
 }
