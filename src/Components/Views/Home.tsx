@@ -10,6 +10,7 @@ import {
   ButtonStartStyle,
   ButtonMenuStyle,
 } from "../Portables/Styles/ButtonStyle";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const [height, setHeight] = useState(window.innerHeight);
@@ -30,6 +31,7 @@ export function Home() {
 
     themeUIStore.setTheme(themeToSet);
   }
+  const navigate = useNavigate();
 
   return (
     <Container maxWidth="md">
@@ -51,7 +53,12 @@ export function Home() {
         ) : (
           <React.Fragment>
             <Stack spacing={2}>
-              <Button sx={ButtonMenuStyle} disableRipple color="inherit">
+              <Button
+                sx={ButtonMenuStyle}
+                disableRipple
+                color="inherit"
+                onClick={() => navigate("/newgame")}
+              >
                 New Game
               </Button>
               <Button sx={ButtonMenuStyle} disableRipple color="inherit">
@@ -62,6 +69,14 @@ export function Home() {
               </Button>
               <Button sx={ButtonMenuStyle} disableRipple color="inherit">
                 Contacts
+              </Button>
+              <Button
+                sx={ButtonMenuStyle}
+                disableRipple
+                color="inherit"
+                onClick={() => setSubMenu(false)}
+              >
+                Exit
               </Button>
             </Stack>
           </React.Fragment>

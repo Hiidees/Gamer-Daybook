@@ -1,10 +1,6 @@
 import { keyframes } from "@mui/system";
-const blinkStart = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
-`;
 
-const blinkMenu = keyframes`
+const blink = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
 `;
@@ -14,7 +10,7 @@ export const ButtonStartStyle = {
     background: "none",
     color: "#969696",
   },
-  animation: `${blinkStart} 2s linear infinite alternate`,
+  animation: `${blink} 2s linear infinite alternate`,
 } as const;
 
 export const ButtonMenuStyle = {
@@ -22,5 +18,5 @@ export const ButtonMenuStyle = {
     background: "none",
     color: "#969696",
   },
-  animation: `${blinkMenu} 2s linear `,
+  animation: `${blink} 2s linear `,
 } as const;
