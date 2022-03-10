@@ -4,33 +4,28 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import React from "react";
 import { useState } from "react";
-import { AppThemeKind } from "../../Domains/Enums/AppThemeEnums";
-import useAppTheme from "../../Hooks/useAppTheme";
 import {
   ButtonStartStyle,
   ButtonMenuStyle,
+  SnackbarSkipStyle,
 } from "../Portables/Styles/ButtonStyle";
 import { useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 export function Home() {
   const [height, setHeight] = useState(window.innerHeight);
   const [subMenu, setSubMenu] = useState(false);
+  const [openSkip, setOpenSkip] = React.useState(false);
+  const vertical = "bottom";
+  const horizontal = "center";
+
   function resizeListener() {
     setHeight(window.innerHeight);
   }
   window.addEventListener("resize", resizeListener); //Evento scaturito dal resize (Appartiene al DOM)
 
-  const themeUIStore = useAppTheme();
-
-  function onSwitchTheme() {
-    // We should move this method on controller
-    const themeToSet =
-      themeUIStore.themeKind === AppThemeKind.Light
-        ? AppThemeKind.Dark
-        : AppThemeKind.Light;
-
-    themeUIStore.setTheme(themeToSet);
-  }
   const navigate = useNavigate();
 
   return (
@@ -41,23 +36,36 @@ export function Home() {
         justifyContent="center"
         sx={{ height: height }}
       >
-        {!subMenu ? (
-          <Button
-            sx={ButtonStartStyle}
-            disableRipple
-            color="inherit"
-            onClick={() => setSubMenu(true)}
+        <Stack spacing={2}>
+          <Typography
+            variant="h1"
+            sx={{
+              fontFamily: "Caveat",
+              fontSize: "70px",
+              marginBottom: 2,
+            }}
+            color="#dcd5dd"
           >
-            Press Start
-          </Button>
-        ) : (
-          <React.Fragment>
-            <Stack spacing={2}>
+            My gamer daybook
+          </Typography>
+          {!subMenu ? (
+            <Button
+              sx={ButtonStartStyle}
+              disableRipple
+              color="inherit"
+              onClick={() => setSubMenu(true)}
+            >
+              Press Start
+            </Button>
+          ) : (
+            <React.Fragment>
               <Button
                 sx={ButtonMenuStyle}
                 disableRipple
                 color="inherit"
                 onClick={() => navigate("/newgame")}
+                onMouseOver={() => setOpenSkip(true)}
+                onMouseLeave={() => setOpenSkip(false)}
               >
                 New Game
               </Button>
@@ -78,9 +86,21 @@ export function Home() {
               >
                 Exit
               </Button>
-            </Stack>
-          </React.Fragment>
-        )}
+            </React.Fragment>
+          )}
+        </Stack>
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          sx={SnackbarSkipStyle}
+          open={openSkip}
+        >
+          <Alert
+            icon={false}
+            sx={{ background: "none", width: "100%", color: "white" }}
+          >
+            Start a new game and discover my life
+          </Alert>
+        </Snackbar>
       </Box>
     </Container>
   );
