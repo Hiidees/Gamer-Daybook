@@ -37,18 +37,13 @@ export const ButtonSkipStyle = {
   animation: `${blink} 2s linear infinite alternate`,
 } as const;
 
-export const SnackbarSkipStyle = {
+export const ButtonLoginStyle = {
   "&:hover": {
     background: "none",
-    color: "#ec0216",
   },
-  animation: `${blink} 1.5s linear`,
-} as const;
-
-export const SnackbarContinueStyle = {
-  "&:hover": {
-    background: "none",
-    color: "#ec0216",
-  },
-  animation: `${blink} 1.5s linear`,
+  float: "right",
+  bottom: 0,
+  right: "0%",
+  position: "absolute",
+  marginBottom: 1,
 } as const;

@@ -1,14 +1,14 @@
 {
   "particles": {
     "number": {
-      "value": 10,
+      "value": 15,
       "density": {
         "enable": true,
         "value_area": 1262.6362266116362
       }
     },
     "color": {
-      "value": "#7d0075"
+      "value": "#4f005e"
     },
     "shape": {
       "type": "circle",
@@ -20,6 +20,7 @@
         "nb_sides": 3
       },
       "image": {
+        "src": "/cheese.svg",
         "width": 500,
         "height": 500
       }
@@ -53,7 +54,7 @@
     },
     "move": {
       "enable": true,
-      "speed": 1.603412060865523,
+      "speed": 1,
       "direction": "top-right",
       "random": false,
       "straight": false,
@@ -71,7 +72,8 @@
     "events": {
       "onhover": {
         "enable": true,
-        "mode": "bubble"
+        "mode": "bubble",
+        "color": "#ffffff"
       },
       "onclick": {
         "enable": false,

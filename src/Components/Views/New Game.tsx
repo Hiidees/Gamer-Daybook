@@ -7,28 +7,42 @@ import Stack from "@mui/material/Stack";
 import {
   ButtonContinueStyle,
   ButtonSkipStyle,
-  SnackbarSkipStyle,
-  SnackbarContinueStyle,
 } from "../Portables/Styles/ButtonStyle";
 import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import Snackbar from "@mui/material/Snackbar";
 import { useNavigate } from "react-router-dom";
-export interface INewGameProps {}
+import { SnackbarInfo } from "../Utils/Snackbar/SnackbarInfo";
+
+export interface INewGameProps {
+  setSnackbar: (
+    bool: boolean,
+    openSnackbarInfo: (bool: boolean) => void
+  ) => void;
+  setMessage: (
+    message: string,
+    setInfoMessage: (message: string) => void
+  ) => void;
+  resizeListener: (height: number, setHeight: (height: number) => void) => void;
+  goTo: (path: string) => void;
+}
+
+enum InfoMessage {
+  skip = "Skip Snackbar",
+  continue = "Continue Snackbar",
+}
 
 export function NewGame(props: INewGameProps) {
+  const { setSnackbar, resizeListener, setMessage, goTo } = props;
   const [height, setHeight] = React.useState(window.innerHeight);
   const [choice, setChoice] = React.useState(false);
-  const [openSkip, setOpenSkip] = React.useState(false);
-  const [openContinue, setOpenContinue] = React.useState(false);
+  const [openInfo, setOpenInfo] = React.useState(false);
+  const [infoMessage, setInfoMessage] = React.useState("");
   const vertical = "bottom";
   const horizontal = "center";
   const navigate = useNavigate();
 
-  function resizeListener() {
-    setHeight(window.innerHeight);
-  }
-  window.addEventListener("resize", resizeListener); //Evento scaturito dal resize (Appartiene al DOM)
+  window.addEventListener("resize", () =>
+    resizeListener(window.innerHeight, setHeight)
+  );
   return (
     <React.Fragment>
       <Container maxWidth="sm">
@@ -39,6 +53,7 @@ export function NewGame(props: INewGameProps) {
           sx={{ height: height - 100 }}
         >
           <Typography
+            component={"span"}
             variant="body1"
             sx={{ textAlign: "justify" }}
             color="white"
@@ -84,18 +99,24 @@ export function NewGame(props: INewGameProps) {
                 <Button
                   sx={ButtonSkipStyle}
                   disableRipple
-                  onMouseOver={() => setOpenSkip(true)}
-                  onMouseLeave={() => setOpenSkip(false)}
+                  onMouseOver={() => {
+                    setSnackbar(true, setOpenInfo);
+                    setMessage(InfoMessage.skip, setInfoMessage);
+                  }}
+                  onMouseLeave={() => setSnackbar(false, setOpenInfo)}
                   color="inherit"
-                  onClick={() => navigate("/")}
+                  onClick={() => goTo("")}
                 >
                   Skip
                 </Button>
                 <Button
                   sx={ButtonContinueStyle}
                   disableRipple
-                  onMouseOver={() => setOpenContinue(true)}
-                  onMouseLeave={() => setOpenContinue(false)}
+                  onMouseOver={() => {
+                    setSnackbar(true, setOpenInfo);
+                    setMessage(InfoMessage.continue, setInfoMessage);
+                  }}
+                  onMouseLeave={() => setSnackbar(false, setOpenInfo)}
                   color="inherit"
                 >
                   Continue
@@ -119,34 +140,13 @@ export function NewGame(props: INewGameProps) {
             /> */}
           </Typography>
 
-          <Snackbar
-            anchorOrigin={{ vertical, horizontal }}
-            sx={SnackbarSkipStyle}
-            open={openSkip}
-          >
-            <Alert
-              icon={false}
-              sx={{ background: "none", width: "100%", color: "#fe3a21" }}
-            >
-              Skip Snackbar
-            </Alert>
-          </Snackbar>
-          <Snackbar
-            anchorOrigin={{ vertical, horizontal }}
-            sx={SnackbarContinueStyle}
-            open={openContinue}
-          >
-            <Alert
-              icon={false}
-              sx={{
-                background: "none",
-                width: "100%",
-                color: "#66f136",
-              }}
-            >
-              Continue Snackbar
-            </Alert>
-          </Snackbar>
+          <SnackbarInfo
+            vertical={vertical}
+            horizontal={horizontal}
+            openInfo={openInfo}
+            message={infoMessage}
+            color={"#ffffff"}
+          />
         </Box>
       </Container>
     </React.Fragment>
