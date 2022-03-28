@@ -1,3 +1,5 @@
 {
-  "body": {}
+  "body": {
+    "backgroundImage": "url(/smoke.jpg )"
+  }
 }
