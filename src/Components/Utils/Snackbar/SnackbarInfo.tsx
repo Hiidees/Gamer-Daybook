@@ -23,7 +23,13 @@ export function SnackbarInfo(props: ISnackbarInfoProps) {
       >
         <Alert
           icon={false}
-          sx={{ background: "none", width: "100%", color: color }}
+          sx={{
+            background: "none",
+            width: "100%",
+            color: color,
+            textAlign: "center",
+            justifyContent: "center",
+          }}
         >
           {message}
         </Alert>

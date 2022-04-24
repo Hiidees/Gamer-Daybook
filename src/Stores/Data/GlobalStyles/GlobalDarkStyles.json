@@ -1,7 +1,6 @@
 {
   "body": {
-    "backgroundImage": "url(/sfondo.jpg ) ",
-    "backgroundSize": " 150%",
-    "backgroundRepeat": "no-repeat"
+    "backgroundImage": "",
+    "backgroundSize": " 150%"
   }
 }

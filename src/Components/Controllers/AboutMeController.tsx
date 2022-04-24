@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AboutMe } from "../Views/AboutMe";
+import { AboutMe } from "../Views/AboutMe/AboutMe";
 
 export interface IAboutMeControllerProps {}
 

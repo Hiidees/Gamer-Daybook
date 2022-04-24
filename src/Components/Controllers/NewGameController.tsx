@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { NewGame } from "../Views/New Game";
+import { NewGame } from "../Views/NewGame/New Game";
 
 export interface INewGameControllerProps {}
 

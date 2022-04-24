@@ -1,6 +1,11 @@
 {
   "palette": {
-    "mode": "dark"
+    "mode": "dark",
+    "info": {
+      "main": "#662d91",
+      "light": "#662d91",
+      "dark": "#662d91"
+    }
   },
   "typography": {
     "allVariants": {

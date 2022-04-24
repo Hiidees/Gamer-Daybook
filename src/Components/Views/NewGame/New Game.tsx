@@ -7,10 +7,14 @@ import Stack from "@mui/material/Stack";
 import {
   ButtonContinueStyle,
   ButtonSkipStyle,
-} from "../Portables/Styles/ButtonStyle";
+} from "../../Portables/Styles/ButtonStyle";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { SnackbarInfo } from "../Utils/Snackbar/SnackbarInfo";
+import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export interface INewGameProps {
   setSnackbar: (
@@ -45,6 +49,21 @@ export function NewGame(props: INewGameProps) {
   );
   return (
     <React.Fragment>
+      <AppBar
+        color="primary"
+        sx={{
+          position: "relative",
+          zIndex: 1400,
+          background: "transparent",
+          boxShadow: "none",
+        }}
+      >
+        <Toolbar>
+          <IconButton size="large" disableRipple onClick={() => navigate(-1)}>
+            <ArrowBackIcon fontSize="inherit" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
       <Container maxWidth="sm">
         <Box
           display="flex"

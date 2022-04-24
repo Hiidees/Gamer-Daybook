@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { AppThemeKind } from "../../Domains/Enums/AppThemeEnums";
 import useAppTheme from "../../Hooks/useAppTheme";
-import { Home } from "../Views/Home";
+import { Home } from "../Views/Home/Home";
 
 export function HomeController() {
   const themeUIStore = useAppTheme();
