@@ -1,5 +1,7 @@
 {
   "body": {
-    "backgroundImage": "url(/smoke.jpg )"
+    "backgroundImage": "url(/sfondo.jpg ) ",
+    "backgroundSize": " 150%",
+    "backgroundRepeat": "no-repeat"
   }
 }

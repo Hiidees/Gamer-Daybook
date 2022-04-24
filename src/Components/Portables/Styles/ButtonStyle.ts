@@ -5,6 +5,24 @@ const blink = keyframes`
   to { opacity: 1; }
 `;
 
+const color = keyframes`
+  from {background: transparent; }
+  to {background: white; color: black; opacity:0.5 }
+`;
+const shake = keyframes`
+      0%  { transform: translate(1px, 1px)   rotate(0deg); background: transparent;},
+    10%  { transform: translate(-1px, -2px) rotate(-1deg);  },
+    20%  { transform: translate(-3px, 0px)  rotate(1deg);   },
+    30%  { transform: translate(3px, 2px)   rotate(0deg);   },
+    40%  { transform: translate(1px, -1px)  rotate(1deg);   },
+    50%  { transform: translate(-1px, 2px)  rotate(-1deg);  },
+    60%  { transform: translate(-3px, 1px)  rotate(0deg);   },
+    70%  { transform: translate(3px, 1px)   rotate(-1deg);  },
+    80%  { transform: translate(-1px, -1px) rotate(1deg);   },
+    90%  { transform: translate(1px, 2px)   rotate(0deg);   },
+    100% { transform: translate(1px, -2px)  rotate(-1deg); background: purple; color: black; opacity:0.8 }
+`;
+
 export const ButtonStartStyle = {
   "&:hover": {
     background: "none",
@@ -46,4 +64,15 @@ export const ButtonLoginStyle = {
   right: "0%",
   position: "absolute",
   marginBottom: 1,
+} as const;
+
+export const ButtonDrawerStyle = {
+  "&:hover": {
+    background: "none",
+    color: "#969696",
+    animation: `${shake} 0.8s linear forwards `,
+  },
+  "&:disabled": {
+    animation: `${color} 0.8s linear forwards `,
+  },
 } as const;
