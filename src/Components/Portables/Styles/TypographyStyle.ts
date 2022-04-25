@@ -6,3 +6,7 @@ export const TypographyMenu = {
   fontSize: "55px",
   marginBottom: 2,
 } as const;
+
+export const TypographyTypeWriter = {
+  textAlign: "center",
+} as const;

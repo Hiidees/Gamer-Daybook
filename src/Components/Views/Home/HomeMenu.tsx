@@ -10,7 +10,7 @@ enum InfoMessage {
   newGame = "Start a new game and discover my life",
   aboutMe = "Check my CV",
   contacts = "Discover how to contact me",
-  gameList = "Check my personal game list",
+  option = "Change configuration",
   exit = "Go back to Start Menu",
 }
 
@@ -78,19 +78,7 @@ export function HomeMenu(props: IHomeMenuProps) {
       >
         New Game
       </Button>
-      <Button
-        sx={ButtonMenuStyle}
-        disableRipple
-        color="inherit"
-        onClick={() => goTo("gamelist")}
-        onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.gameList, setInfoMessage);
-        }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
-      >
-        Game List
-      </Button>
+
       <Button
         sx={ButtonMenuStyle}
         disableRipple
@@ -116,6 +104,19 @@ export function HomeMenu(props: IHomeMenuProps) {
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
         Contacts
+      </Button>
+      <Button
+        sx={ButtonMenuStyle}
+        disableRipple
+        color="inherit"
+        onClick={() => goTo("option")}
+        onMouseOver={() => {
+          setSnackbar(true, setOpenInfo);
+          setMessage(InfoMessage.option, setInfoMessage);
+        }}
+        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+      >
+        Option
       </Button>
       <Button
         sx={ButtonMenuStyle}
