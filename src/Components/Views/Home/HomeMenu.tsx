@@ -73,9 +73,11 @@ export function HomeMenu(props: IHomeMenuProps) {
         disableRipple
         color="inherit"
         onClick={() => {
-          goTo("newgame");
           if (getCookie("newgame")) {
             setOpenDialog(true);
+            console.log("ciao");
+          } else {
+            goTo("newgame");
           }
         }}
         onMouseOver={() => {
@@ -150,7 +152,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         message={infoMessage}
         color={"white"}
       />
-      <NewGameCreation open={openDialog} setOpen={setOpenDialog} />
+      <NewGameCreation open={openDialog} setOpen={setOpenDialog} goTo={goTo} />
     </React.Fragment>
   );
 }
