@@ -17,7 +17,7 @@ export function NewGameCreation(props: INewGameCreationProps) {
   };
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Are you sure to start a new Game?</DialogTitle>
+      <DialogTitle>Are you sure to start a new game?</DialogTitle>
       <Stack direction={"row"} justifyContent="center" spacing={4}>
         <Button variant="text" onClick={() => goTo("newgame")}>
           Yes

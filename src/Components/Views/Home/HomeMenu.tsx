@@ -65,7 +65,7 @@ export function HomeMenu(props: IHomeMenuProps) {
             fontSize: "15px",
           }}
         >
-          Welcome! I'm Marco, nice to meet you!
+          Hi! I'm Marco, welcome to my website!
         </Alert>
       </Slide>
       <Button

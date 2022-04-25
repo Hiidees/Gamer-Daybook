@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
 import { AppbarNewGame } from "./AppbarNewGame";
 import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
-import { setCookie } from "../../Utils/Cookies/CookieManager";
+import { getCookie, setCookie } from "../../Utils/Cookies/CookieManager";
 
 export interface INewGameProps {
   setSnackbar: (
@@ -45,7 +45,7 @@ export function NewGame(props: INewGameProps) {
           justifyContent="center"
           sx={{ height: height - 100 }}
         >
-          {setCookie("newgame", "true")}
+          {!getCookie("newgame") ?? setCookie("newgame", "true")}
           <TypeWriter
             setSnackbar={setSnackbar}
             setMessage={setMessage}
