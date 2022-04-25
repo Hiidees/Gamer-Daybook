@@ -5,6 +5,10 @@ const blink = keyframes`
   to { opacity: 1; }
 `;
 
+const blink2 = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
 const color = keyframes`
   from {background: transparent; }
   to {background: white; color: black; opacity:0.5 }
@@ -28,13 +32,14 @@ export const ButtonStartStyle = {
     background: "none",
     color: "#969696",
   },
-  animation: `${blink} 2s linear infinite alternate`,
+  animation: `${blink2} 1s linear infinite alternate`,
 } as const;
 
 export const ButtonMenuStyle = {
   "&:hover": {
     background: "none",
     color: "#969696",
+    animation: `${blink} 2s linear infinite alternate`,
   },
   animation: `${blink} 2s linear `,
 } as const;

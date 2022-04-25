@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { ButtonStartStyle } from "../../Portables/Styles/ButtonStyle";
 import { TypographyMenu } from "../../Portables/Styles/TypographyStyle";
+import { setCookie } from "../../Utils/Cookies/CookieManager";
 
 export interface IStartProps {
   setMenu: (bool: boolean, openMenu: (bool: boolean) => void) => void;
@@ -25,7 +26,10 @@ export default function Start(props: IStartProps) {
         sx={ButtonStartStyle}
         disableRipple
         color="inherit"
-        onClick={() => setMenu(true, setSubMenu)}
+        onClick={() => {
+          setCookie("start", "true");
+          setMenu(true, setSubMenu);
+        }}
       >
         Press Start
       </Button>

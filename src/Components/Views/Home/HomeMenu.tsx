@@ -5,6 +5,8 @@ import Avatar from "@mui/material/Avatar";
 import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
 import Button from "@mui/material/Button";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
+import { getCookie, removeCookie } from "../../Utils/Cookies/CookieManager";
+import { NewGameCreation } from "./NewGameCreation";
 
 enum InfoMessage {
   newGame = "Start a new game and discover my life",
@@ -45,6 +47,7 @@ export function HomeMenu(props: IHomeMenuProps) {
     openInfo,
   } = props;
 
+  const [openDialog, setOpenDialog] = React.useState(false);
   const vertical = "bottom";
   const horizontal = "center";
 
@@ -69,7 +72,12 @@ export function HomeMenu(props: IHomeMenuProps) {
         sx={ButtonMenuStyle}
         disableRipple
         color="inherit"
-        onClick={() => goTo("newgame")}
+        onClick={() => {
+          goTo("newgame");
+          if (getCookie("newgame")) {
+            setOpenDialog(true);
+          }
+        }}
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
           setMessage(InfoMessage.newGame, setInfoMessage);
@@ -130,6 +138,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => {
           setMenu(false, setSubMenu);
           setSnackbar(false, setOpenInfo);
+          removeCookie("start");
         }}
       >
         Exit
@@ -141,6 +150,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         message={infoMessage}
         color={"white"}
       />
+      <NewGameCreation open={openDialog} setOpen={setOpenDialog} />
     </React.Fragment>
   );
 }
