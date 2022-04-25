@@ -45,7 +45,7 @@ export function NewGame(props: INewGameProps) {
           justifyContent="center"
           sx={{ height: height - 100 }}
         >
-          {!getCookie("newgame") ?? setCookie("newgame", "true")}
+          {setCookie("newgame", "true")}
           <TypeWriter
             setSnackbar={setSnackbar}
             setMessage={setMessage}
