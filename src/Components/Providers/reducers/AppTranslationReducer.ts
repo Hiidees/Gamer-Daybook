@@ -3,12 +3,12 @@ interface IState {
   translation: any;
 }
 
-enum AppTranslationAction {
-  getTranslationKey,
+export enum AppTranslationAction {
+ // getTranslationKey,
   updateTranslation,
 }
 
-interface IAction {
+export interface IAction {
   type: AppTranslationAction;
   payload: IState;
 }

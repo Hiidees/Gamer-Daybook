@@ -1,10 +1,14 @@
 import { useReducer } from "react";
-import reducer from "./reducers/AppTranslationReducer";
+import reducer, {
+  AppTranslationAction,
+  IAction,
+} from "./reducers/AppTranslationReducer";
 import IAppTranslation from "../../Domains/Interfaces/IContextTranslation";
 import SupportedLangugesEnum from "../../Domains/Enums/AppTranslationEnums";
 import { AppTranslationStore } from "../../Stores/UIStores/AppTranslation";
 import AppTranslationUIStore from "../../Stores/UIStores/AppTranslation";
 import { default as EnDataTranslation } from "../../Stores/Data/Translations/en.json";
+import { default as ItDataTranslation } from "../../Stores/Data/Translations/it.json";
 
 interface IProviderProps {}
 
@@ -17,7 +21,7 @@ function AppTranslationProvider(
 
   const initialState: IAppTranslation = {
     // We should take initial state from cookies/local storage
-    translation: EnDataTranslation,
+    translation: ItDataTranslation,
     updateTranslation: updateTranslation,
     getTranslationKey: getTranslationKey,
   };
@@ -25,7 +29,12 @@ function AppTranslationProvider(
 
   function updateTranslation(LanguageCode: SupportedLangugesEnum) {
     appTranslationStore.translation = LanguageCode;
-    dispatch(appTranslationStore.translation);
+
+    const action: IAction = {
+      type: AppTranslationAction.updateTranslation,
+      payload: appTranslationStore.translation,
+    };
+    dispatch(action);
   }
 
   function getTranslationKey() {
