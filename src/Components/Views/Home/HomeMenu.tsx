@@ -5,7 +5,7 @@ import Avatar from "@mui/material/Avatar";
 import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
 import Button from "@mui/material/Button";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
-import { getCookie, removeCookie } from "../../Utils/Cookies/CookieManager";
+import useCookies from "../../../Hooks/useCookies";
 import { NewGameCreation } from "./NewGameCreation";
 
 enum InfoMessage {
@@ -73,7 +73,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         disableRipple
         color="inherit"
         onClick={() => {
-          if (getCookie("newgame")) {
+          if (useCookies.getCookie("newgame")) {
             setOpenDialog(true);
             console.log("ciao");
           } else {
@@ -140,7 +140,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => {
           setMenu(false, setSubMenu);
           setSnackbar(false, setOpenInfo);
-          removeCookie("start");
+          useCookies.removeCookie("start");
         }}
       >
         Exit

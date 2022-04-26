@@ -3,7 +3,8 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { ButtonStartStyle } from "../../Portables/Styles/ButtonStyle";
 import { TypographyMenu } from "../../Portables/Styles/TypographyStyle";
-import { setCookie } from "../../Utils/Cookies/CookieManager";
+import useCookies from "../../../Hooks/useCookies";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 export interface IStartProps {
   setMenu: (bool: boolean, openMenu: (bool: boolean) => void) => void;
@@ -12,6 +13,8 @@ export interface IStartProps {
 
 export default function Start(props: IStartProps) {
   const { setMenu, setSubMenu } = props;
+  const translationState = useAppTranslation();
+
   return (
     <React.Fragment>
       <Typography
@@ -27,11 +30,11 @@ export default function Start(props: IStartProps) {
         disableRipple
         color="inherit"
         onClick={() => {
-          setCookie("start", "true");
+          useCookies.setCookie("start", "true");
           setMenu(true, setSubMenu);
         }}
       >
-        Press Start
+        {translationState.translation["Start"]}
       </Button>
     </React.Fragment>
   );

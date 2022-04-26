@@ -5,7 +5,7 @@ import React from "react";
 import { useState } from "react";
 import Start from "./Start";
 import { HomeMenu } from "./HomeMenu";
-import { getCookie } from "../../Utils/Cookies/CookieManager";
+import useCookies from "../../../Hooks/useCookies";
 
 interface IHome {
   setSnackbar: (
@@ -42,7 +42,7 @@ export function Home(props: IHome) {
           sx={{ height: height }}
         >
           <Stack spacing={2}>
-            {!subMenu && !getCookie("start") ? (
+            {!subMenu && !useCookies.getCookie("start") ? (
               <Start setMenu={setMenu} setSubMenu={setSubMenu} />
             ) : (
               <HomeMenu
