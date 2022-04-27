@@ -3,6 +3,17 @@
   "Start": "Press Start",
   "Italian": "Italian",
   "English": "English",
-  "Choose": "Choose the language",
-  "Confirm": "Confirm"
+  "Choose the language": "Choose the language",
+  "Confirm": "Confirm",
+  "NewGame": "New Game",
+  "AboutMe": "About me",
+  "Contact": "Contact",
+  "Options": "Options",
+  "Exit": "Exit",
+  "Hi! I'm Marco, welcome to my website!": "Hi! I'm Marco, welcome to my website!",
+  "Start a new game and discover my life": "Start a new game and discover my life",
+  "Check my CV": "Check my CV",
+  "Discover how to contact me": "Discover how to contact me",
+  "Change configuration": "Change configuration",
+  "Go back to Start Menu": "Go back to Start Menu"
 }

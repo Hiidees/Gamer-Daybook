@@ -3,6 +3,19 @@
   "Start": "Premi Start",
   "Italian": "Italiano",
   "English": "Inglese",
-  "Choose": "Scegli la lingua",
-  "Confirm": "Conferma"
+  "Choose the language": "Scegli la lingua",
+  "Confirm": "Conferma",
+  "NewGame": "Nuovo gioco",
+  "AboutMe": "Chi sono",
+  "Contact": "Contatti",
+  "Options": "Impostazioni",
+  "Exit": "Esci",
+  "Hi! I'm Marco, welcome to my website!": "Ciao! Sono Marco, benvenuto nel mio sito!",
+  "Start a new game and discover my life": "Inizia una nuova partita",
+  "Check my CV": "Visita il mio CV",
+  "Discover how to contact me": "I miei contatti",
+  "Change configuration": "Modifica Impostazioni",
+  "Go back to Start Menu": "Torna al menu principale"
+  
+
 }

@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
 import useCookies from "../../../Hooks/useCookies";
 import { NewGameCreation } from "./NewGameCreation";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 enum InfoMessage {
   newGame = "Start a new game and discover my life",
@@ -50,6 +51,7 @@ export function HomeMenu(props: IHomeMenuProps) {
   const [openDialog, setOpenDialog] = React.useState(false);
   const vertical = "bottom";
   const horizontal = "center";
+  const translationState = useAppTranslation();
 
   return (
     <React.Fragment>
@@ -65,7 +67,11 @@ export function HomeMenu(props: IHomeMenuProps) {
             fontSize: "15px",
           }}
         >
-          Hi! I'm Marco, welcome to my website!
+          {
+            translationState.translation[
+              "Hi! I'm Marco, welcome to my website!"
+            ]
+          }
         </Alert>
       </Slide>
       <Button
@@ -86,7 +92,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
-        New Game
+        {translationState.translation["NewGame"]}
       </Button>
 
       <Button
@@ -100,7 +106,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
-        About me
+        {translationState.translation["AboutMe"]}
       </Button>
       <Button
         sx={ButtonMenuStyle}
@@ -113,7 +119,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
-        Contacts
+        {translationState.translation["Contact"]}
       </Button>
       <Button
         sx={ButtonMenuStyle}
@@ -126,7 +132,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
-        Option
+        {translationState.translation["Options"]}
       </Button>
       <Button
         sx={ButtonMenuStyle}
@@ -143,7 +149,7 @@ export function HomeMenu(props: IHomeMenuProps) {
           useCookies.removeCookie("start");
         }}
       >
-        Exit
+        {translationState.translation["Exit"]}
       </Button>
       <SnackbarInfo
         vertical={vertical}

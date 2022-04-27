@@ -44,7 +44,7 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
               sx={{ fontSize: "35px" }}
               color="#dcd5dd"
             >
-              {translationState.translation["Choose"]}
+              {translationState.translation["Choose the language"]}
             </Typography>
             <List sx={{ justifyContent: "center" }}>
               {Language.map((language) => (
