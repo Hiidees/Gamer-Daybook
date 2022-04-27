@@ -1,12 +1,9 @@
 import { createContext } from "react";
-import IAppTranslation from "../../Domains/Interfaces/IContextTranslation";
-import { default as ItDataTranslation } from "../Data/Translations/it.json";
-import { default as EnDataTranslation } from "../Data/Translations/en.json";
-import SupportedLangugesEnum from "../../Domains/Enums/AppTranslationEnums";
+import { IStateTranslation } from "../../Domains/Interfaces/IContextTranslation";
 
-export default createContext<IAppTranslation>({} as IAppTranslation);
+export default createContext<IStateTranslation>({} as IStateTranslation);
 
-export class AppTranslationStore {
+/* export class AppTranslationStore {
   private static _instance: AppTranslationStore;
   private _translation: any;
   private _translationKey: string;
@@ -49,3 +46,4 @@ export class AppTranslationStore {
     this._translationKey = "Italiano";
   }
 }
+ */

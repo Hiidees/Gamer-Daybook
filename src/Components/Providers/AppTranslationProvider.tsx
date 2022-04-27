@@ -3,9 +3,8 @@ import reducer, {
   AppTranslationAction,
   IAction,
 } from "./reducers/AppTranslationReducer";
-import IAppTranslation from "../../Domains/Interfaces/IContextTranslation";
+import { IAppTranslation } from "../../Domains/Interfaces/IContextTranslation";
 import SupportedLangugesEnum from "../../Domains/Enums/AppTranslationEnums";
-import { AppTranslationStore } from "../../Stores/UIStores/AppTranslation";
 import AppTranslationUIStore from "../../Stores/UIStores/AppTranslation";
 import { default as EnDataTranslation } from "../../Stores/Data/Translations/en.json";
 import { default as ItDataTranslation } from "../../Stores/Data/Translations/it.json";
@@ -17,28 +16,40 @@ function AppTranslationProvider(
 ) {
   const { children } = props;
 
-  const appTranslationStore = AppTranslationStore.getInstance();
-
   const initialState: IAppTranslation = {
     // We should take initial state from cookies/local storage
     translation: ItDataTranslation,
+    translationKey: SupportedLangugesEnum.It,
     updateTranslation: updateTranslation,
     getTranslationKey: getTranslationKey,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function updateTranslation(LanguageCode: SupportedLangugesEnum) {
-    appTranslationStore.translation = LanguageCode;
+    let translation = EnDataTranslation;
+    let translationKey = SupportedLangugesEnum.En;
+
+    switch (LanguageCode) {
+      case SupportedLangugesEnum.It:
+        translation = ItDataTranslation;
+        translationKey = SupportedLangugesEnum.It;
+        break;
+
+      case SupportedLangugesEnum.En:
+        translation = EnDataTranslation;
+        translationKey = SupportedLangugesEnum.En;
+        break;
+    }
 
     const action: IAction = {
       type: AppTranslationAction.updateTranslation,
-      payload: appTranslationStore.translation,
+      payload: { translation, translationKey },
     };
     dispatch(action);
   }
 
   function getTranslationKey() {
-    return appTranslationStore.translationKey;
+    return state.translationKey;
   }
 
   return (

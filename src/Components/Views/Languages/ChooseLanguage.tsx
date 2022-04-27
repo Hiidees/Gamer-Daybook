@@ -54,9 +54,12 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
                         : SupportedLangugesEnum.En
                     )
                   }
-                  disabled={language === translationState.getTranslationKey()}
+                  disabled={
+                    language === translationState.getTranslationKey()
+                      ? true
+                      : false
+                  }
                 >
-                  {console.log(translationState.getTranslationKey())}
                   <ListItemIcon sx={{ color: "#acc7fe" }}>
                     {language === translationState.getTranslationKey() ? (
                       <CheckBoxIcon />
@@ -64,17 +67,17 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
                       <CheckBoxOutlineBlankIcon />
                     )}
                   </ListItemIcon>
-                  <ListItemText primary={language} />
+                  <ListItemText
+                    primary={
+                      language === "Italiano"
+                        ? translationState.translation["Italian"]
+                        : translationState.translation["English"]
+                    }
+                  />
                 </ListItem>
               ))}
             </List>
 
-            <Button sx={ButtonMenuStyle} disableRipple color="inherit">
-              {translationState.translation["Italian"]}
-            </Button>
-            <Button sx={ButtonMenuStyle} disableRipple color="inherit">
-              {translationState.translation["English"]}
-            </Button>
             <Button disableRipple variant="contained" color="success">
               Confirm
             </Button>

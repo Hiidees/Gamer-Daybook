@@ -1,10 +1,11 @@
+import SupportedLangugesEnum from "../../../Domains/Enums/AppTranslationEnums";
 
 interface IState {
   translation: any;
+  translationKey: SupportedLangugesEnum;
 }
 
 export enum AppTranslationAction {
- // getTranslationKey,
   updateTranslation,
 }
 
@@ -21,6 +22,7 @@ export default function reducer(state: IState, action: IAction): IState {
       return {
         ...state,
         translation: payload.translation,
+        translationKey: payload.translationKey
       };
 
     default:

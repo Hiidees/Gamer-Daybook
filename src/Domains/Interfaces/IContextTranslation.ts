@@ -1,9 +1,15 @@
 import SupportedLangugesEnum from "../Enums/AppTranslationEnums";
 
-interface IAppTranslation {
+export interface IAppTranslation {
   translation: any;
+  translationKey: SupportedLangugesEnum.It,
   updateTranslation: (LanguageCode: SupportedLangugesEnum) => void;
-  getTranslationKey: () => string;
+  getTranslationKey: () => SupportedLangugesEnum;
 }
 
-export default IAppTranslation;
+export interface IStateTranslation{
+  translation: any;
+  updateTranslation: (LanguageCode: SupportedLangugesEnum) => void;
+  getTranslationKey: () => SupportedLangugesEnum;
+}
+
