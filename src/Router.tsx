@@ -4,9 +4,11 @@ import { AboutMeController } from "./Components/Controllers/AboutMeController";
 import { HomeController } from "./Components/Controllers/HomeController";
 import { LanguageController } from "./Components/Controllers/LanguageController";
 import { NewGameController } from "./Components/Controllers/NewGameController";
-import useCookies from "./Hooks/useCookies";
+import useAppTranslation from "./Hooks/useAppTranslation";
 
 export default function RouteProvider() {
+  const appTranslation = useAppTranslation();
+
   return (
     <React.Fragment>
       <BrowserRouter>
@@ -14,7 +16,7 @@ export default function RouteProvider() {
           <Route
             path="/"
             element={
-              useCookies.getCookie("language") ? (
+              appTranslation.translationOnCookies ? (
                 <HomeController />
               ) : (
                 <LanguageController />

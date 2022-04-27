@@ -5,9 +5,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { AppbarAbout } from "../../Portables/Styles/AppbarStyle";
 
-export interface IAppbarNewGameProps {}
+export interface IAppbarGoBackProps {}
 
-export function AppbarNewGame(props: IAppbarNewGameProps) {
+export function AppbarGoBack(props: IAppbarGoBackProps) {
   const navigate = useNavigate();
   return (
     <AppBar color="primary" sx={AppbarAbout}>

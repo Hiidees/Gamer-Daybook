@@ -3,6 +3,7 @@ import SupportedLangugesEnum from "../../../Domains/Enums/AppTranslationEnums";
 interface IState {
   translation: any;
   translationKey: SupportedLangugesEnum;
+  translationOnCookies: boolean;
 }
 
 export enum AppTranslationAction {
@@ -22,7 +23,8 @@ export default function reducer(state: IState, action: IAction): IState {
       return {
         ...state,
         translation: payload.translation,
-        translationKey: payload.translationKey
+        translationKey: payload.translationKey,
+        translationOnCookies: payload.translationOnCookies,
       };
 
     default:

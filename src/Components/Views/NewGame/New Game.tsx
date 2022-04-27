@@ -2,7 +2,7 @@ import * as React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
-import { AppbarNewGame } from "./AppbarNewGame";
+import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
 import useCookies from "../../../Hooks/useCookies";
 
@@ -37,7 +37,7 @@ export function NewGame(props: INewGameProps) {
   );
   return (
     <React.Fragment>
-      <AppbarNewGame />
+      <AppbarGoBack />
       <Container maxWidth="sm">
         <Box
           display="flex"
