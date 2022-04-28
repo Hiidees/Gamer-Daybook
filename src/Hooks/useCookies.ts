@@ -3,7 +3,7 @@ import Cookies from "universal-cookie";
 const cookie = new Cookies();
 
 function setCookie(name: string, value: string) {
-  cookie.set(name, value);
+  cookie.set(name, value, {expires: new Date(9999, 1, 1)});
 }
 
 function getCookie(name: string) {
