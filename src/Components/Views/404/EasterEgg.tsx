@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
+import { Button404Style } from "../../Portables/Styles/ButtonStyle";
 
 export interface IEasterEggProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -40,7 +40,7 @@ export function EasterEgg(props: IEasterEggProps) {
             Easter egg
           </Typography>
           <Button
-            sx={ButtonMenuStyle}
+            sx={Button404Style}
             disableRipple
             color="inherit"
             onClick={() => {

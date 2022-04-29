@@ -9,14 +9,6 @@ import useCookies from "../../../Hooks/useCookies";
 import { NewGameCreation } from "./NewGameCreation";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 
-enum InfoMessage {
-  newGame = "Start a new game and discover my life",
-  aboutMe = "Check my CV",
-  contacts = "Discover how to contact me",
-  option = "Change configuration",
-  exit = "Go back to Start Menu",
-}
-
 export interface IHomeMenuProps {
   setSnackbar: (
     bool: boolean,
@@ -88,7 +80,12 @@ export function HomeMenu(props: IHomeMenuProps) {
         }}
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.newGame, setInfoMessage);
+          setMessage(
+            translationState.translation[
+              "Start a new game and discover my life"
+            ],
+            setInfoMessage
+          );
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
@@ -102,7 +99,10 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => goTo("aboutme")}
         onMouseOver={async () => {
           setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.aboutMe, setInfoMessage);
+          setMessage(
+            translationState.translation["Check my CV"],
+            setInfoMessage
+          );
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
@@ -115,7 +115,10 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => goTo("contacts")}
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.contacts, setInfoMessage);
+          setMessage(
+            translationState.translation["Discover how to contact me"],
+            setInfoMessage
+          );
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
@@ -128,7 +131,10 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => goTo("option")}
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.option, setInfoMessage);
+          setMessage(
+            translationState.translation["Change configuration"],
+            setInfoMessage
+          );
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
       >
@@ -140,7 +146,10 @@ export function HomeMenu(props: IHomeMenuProps) {
         color="inherit"
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.exit, setInfoMessage);
+          setMessage(
+            translationState.translation["Go back to Start Menu"],
+            setInfoMessage
+          );
         }}
         onMouseLeave={() => setSnackbar(false, setOpenInfo)}
         onClick={() => {

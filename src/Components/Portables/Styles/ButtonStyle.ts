@@ -13,6 +13,12 @@ const color = keyframes`
   from {background: transparent; }
   to {background: white; color: black; opacity:0.5 }
 `;
+
+const colorChange = keyframes` 
+    from  {  background-image: linear-gradient(45deg, red, blue) },
+   
+    to { background-image: linear-gradient(45deg, violet, white) }`;
+
 /* const shake = keyframes`
       0%  { transform: translate(1px, 1px)   rotate(0deg); background: transparent;},
     10%  { transform: translate(-1px, -2px) rotate(-1deg);  },
@@ -80,4 +86,17 @@ export const ButtonDrawerStyle = {
   "&:disabled": {
     animation: `${color} 0.8s linear forwards `,
   },
+} as const;
+
+export const Button404Style = {
+  "&:hover": {
+    background: "none",
+   
+    
+  },
+    animation: `${colorChange} 2s linear infinite`,
+  //backgroundImage: "linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
+   WebkitBackgroundClip: "text !important",
+   WebkitTextFillColor: "transparent"
+  
 } as const;

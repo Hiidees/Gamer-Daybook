@@ -1,9 +1,11 @@
 import Cookies from "universal-cookie";
 
 const cookie = new Cookies();
+const aYearFromNow = new Date();
+aYearFromNow.setFullYear(aYearFromNow.getFullYear()+1);
 
 function setCookie(name: string, value: string) {
-  cookie.set(name, value, {expires: new Date(9999, 1, 1)});
+  cookie.set(name, value, {expires: aYearFromNow});
 }
 
 function getCookie(name: string) {
