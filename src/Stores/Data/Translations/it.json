@@ -1,5 +1,5 @@
 {
-  "Language": "Lingua",
+  "Change the language": "Cambia la lingua",
   "Start": "Premi Start",
   "Italian": "Italiano",
   "English": "Inglese",
@@ -15,7 +15,6 @@
   "Check my CV": "Visita il mio CV",
   "Discover how to contact me": "I miei contatti",
   "Change configuration": "Modifica Impostazioni",
-  "Go back to Start Menu": "Torna al menu principale"
-  
-
+  "Go back to Start Menu": "Torna al menu principale",
+  "Change theme": "Cambia il tema"
 }

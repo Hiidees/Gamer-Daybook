@@ -8,16 +8,16 @@
       }
     },
     "color": {
-      "value": "#662d91"
+      "value": "#f9d4d3"
     },
     "shape": {
-      "type": "circle",
+      "type": "star",
       "stroke": {
-        "width": 0,
-        "color": "#fafafa"
+        "width": 2,
+        "color": "#862756"
       },
       "polygon": {
-        "nb_sides": 3
+        "nb_sides": 5
       },
       "image": {
         "src": "/cheese.svg",
@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 108.23031410842279,
+      "value": 50,
       "random": true,
       "anim": {
         "enable": false,

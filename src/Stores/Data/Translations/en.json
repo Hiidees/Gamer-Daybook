@@ -1,5 +1,5 @@
 {
-  "Language": "Language",
+  "Change the language": "Change the language",
   "Start": "Press Start",
   "Italian": "Italian",
   "English": "English",
@@ -15,5 +15,6 @@
   "Check my CV": "Check my CV",
   "Discover how to contact me": "Discover how to contact me",
   "Change configuration": "Change configuration",
-  "Go back to Start Menu": "Go back to Start Menu"
+  "Go back to Start Menu": "Go back to Start Menu",
+  "Change theme": "Change theme"
 }

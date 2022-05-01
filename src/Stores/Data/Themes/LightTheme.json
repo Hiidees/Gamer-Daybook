@@ -1,5 +1,19 @@
 {
   "palette": {
-    "mode": "light"
+    "mode": "light",
+    "info": {
+      "main": "#662d91",
+      "light": "#662d91",
+      "dark": "#662d91"
+    },
+    "background": {
+      "default": "#d2f5fa"
+    }
+  },
+  "typography": {
+    "allVariants": {
+      "fontFamily": "Syne Mono",
+      "fontSize": 25
+    }
   }
 }

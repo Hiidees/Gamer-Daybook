@@ -34,14 +34,13 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{ height: height }}
+          sx={{ height: height - 100 }}
         >
           <Stack spacing={2} sx={{ width: "100%" }}>
             <Typography
               variant="h1"
               textAlign={"center"}
               sx={{ fontSize: "35px" }}
-              color="#dcd5dd"
             >
               {translationState.translation["Choose the language"]}
             </Typography>

@@ -36,7 +36,7 @@ const colorChange = keyframes`
 export const ButtonStartStyle = {
   "&:hover": {
     background: "none",
-    color: "#969696",
+    //color: "#969696",
   },
   animation: `${blink2} 1s linear infinite alternate`,
 } as const;
@@ -44,7 +44,7 @@ export const ButtonStartStyle = {
 export const ButtonMenuStyle = {
   "&:hover": {
     background: "none",
-    color: "#969696",
+    //color: "#969696",
     animation: `${blink} 2s linear infinite alternate`,
   },
   animation: `${blink} 2s linear `,
@@ -91,12 +91,9 @@ export const ButtonDrawerStyle = {
 export const Button404Style = {
   "&:hover": {
     background: "none",
-   
-    
   },
-    animation: `${colorChange} 2s linear infinite`,
+  animation: `${colorChange} 2s linear infinite`,
   //backgroundImage: "linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
-   WebkitBackgroundClip: "text !important",
-   WebkitTextFillColor: "transparent"
-  
+  WebkitBackgroundClip: "text !important",
+  WebkitTextFillColor: "transparent",
 } as const;

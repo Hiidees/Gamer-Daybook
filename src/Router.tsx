@@ -5,6 +5,7 @@ import { EasterEggController } from "./Components/Controllers/EasterEggControlle
 import { HomeController } from "./Components/Controllers/HomeController";
 import { LanguageController } from "./Components/Controllers/LanguageController";
 import { NewGameController } from "./Components/Controllers/NewGameController";
+import { OptionController } from "./Components/Controllers/OptionController";
 import useAppTranslation from "./Hooks/useAppTranslation";
 import useCookies from "./Hooks/useCookies";
 
@@ -30,6 +31,7 @@ export default function RouteProvider() {
               <Route path="/newgame" element={<NewGameController />} />
               <Route path="/aboutme" element={<AboutMeController />} />
               <Route path="/languages" element={<LanguageController />} />
+              <Route path="/option" element={<OptionController />} />
             </React.Fragment>
           )}
 

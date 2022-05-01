@@ -1,5 +1,6 @@
 import { Interpolation } from "@emotion/react";
 import { Theme } from "@mui/material/styles/createTheme";
+import { ISourceOptions } from "tsparticles";
 import {
   AppThemeAction,
   AppThemeKind,
@@ -9,6 +10,7 @@ interface IState {
   theme: Theme;
   globalStyles?: Interpolation<Theme>;
   themeKind: AppThemeKind;
+  options: any;
 }
 
 interface IAction {
@@ -28,6 +30,7 @@ export default function reducer(state: IState, action: IAction): IState {
         theme: payload.theme,
         globalStyles: payload.globalStyles,
         themeKind: payload.themeKind,
+        options: payload.options,
       };
 
     default:

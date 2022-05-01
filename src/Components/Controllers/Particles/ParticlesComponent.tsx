@@ -1,9 +1,14 @@
-import * as ParticlesOptions from "../../../Stores/Data/Particles/ParticlesOptions.json";
 import { useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import "./Particles.css";
 import { ISourceOptions } from "tsparticles";
-export default function ParticlesComponent() {
+
+interface IParticlesComponent {
+  options: ISourceOptions;
+}
+
+export default function ParticlesComponent(props: IParticlesComponent) {
+  const { options } = props;
   const [height, setHeight] = useState("");
 
   useEffect(() => {
@@ -18,10 +23,6 @@ export default function ParticlesComponent() {
   }, []);
 
   return (
-    <Particles
-      height={height}
-      canvasClassName="example"
-      options={ParticlesOptions as ISourceOptions}
-    />
+    <Particles height={height} canvasClassName="example" options={options} />
   );
 }

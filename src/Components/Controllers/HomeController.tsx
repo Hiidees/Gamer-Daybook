@@ -1,22 +1,8 @@
 import { useNavigate } from "react-router-dom";
-//import { AppThemeKind } from "../../Domains/Enums/AppThemeEnums";
-//import useAppTheme from "../../Hooks/useAppTheme";
 import { Home } from "../Views/Home/Home";
 
 export function HomeController() {
-  //const themeUIStore = useAppTheme();
-
   const navigate = useNavigate();
-
-  /* function onSwitchTheme() {
-    // We should move this method on controller
-    const themeToSet =
-      themeUIStore.themeKind === AppThemeKind.Light
-        ? AppThemeKind.Dark
-        : AppThemeKind.Light;
-
-    themeUIStore.setTheme(themeToSet);
-  } */
 
   function setSnackbar(
     bool: boolean,

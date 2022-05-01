@@ -10,7 +10,7 @@ export interface IAppbarGoBackProps {}
 export function AppbarGoBack(props: IAppbarGoBackProps) {
   const navigate = useNavigate();
   return (
-    <AppBar color="primary" sx={AppbarAbout}>
+    <AppBar position="fixed" color="primary" sx={AppbarAbout}>
       <Toolbar>
         <IconButton size="large" disableRipple onClick={() => navigate(-1)}>
           <ArrowBackIcon fontSize="inherit" />
