@@ -6,6 +6,7 @@ import { useState } from "react";
 import Start from "./Start";
 import { HomeMenu } from "./HomeMenu";
 import useCookies from "../../../Hooks/useCookies";
+import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 
 interface IHome {
   setSnackbar: (
@@ -34,6 +35,7 @@ export function Home(props: IHome) {
 
   return (
     <React.Fragment>
+      <MyHelmet title={"Home"} />
       <Container maxWidth="md">
         <Box
           display="flex"

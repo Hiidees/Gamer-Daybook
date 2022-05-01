@@ -11,6 +11,7 @@ import SupportedLangugesEnum from "../../../Domains/Enums/AppTranslationEnums";
 import { ListButtonLanguage } from "../../Portables/Styles/ListStyle";
 import useCookies from "../../../Hooks/useCookies";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
+import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 
 export interface IChooseLanguageProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -28,7 +29,14 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
   );
   return (
     <React.Fragment>
-      {useCookies.getCookie("language") && <AppbarGoBack />}
+      {useCookies.getCookie("language") && (
+        <React.Fragment>
+          <MyHelmet
+            title={translationState.translation["Change the language"]}
+          />
+          <AppbarGoBack />
+        </React.Fragment>
+      )}
       <Container maxWidth="xs">
         <Box
           display="flex"

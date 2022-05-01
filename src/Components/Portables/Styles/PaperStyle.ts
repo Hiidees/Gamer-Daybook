@@ -6,3 +6,8 @@ export const PaperDrawer = {
   borderRight: "none",
   justifyContent: "center",
 } as const;
+
+export const PaperDialog = {
+  borderStyle: "solid",
+  borderColor: "#910000",
+} as const;

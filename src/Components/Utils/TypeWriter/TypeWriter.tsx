@@ -46,7 +46,7 @@ export function TypeWriter(props: ITypeWriterProps) {
       component={"span"}
       variant="body1"
       sx={TypographyTypeWriter}
-      color="white"
+      color="inherit"
     >
       <Typewriter
         options={{

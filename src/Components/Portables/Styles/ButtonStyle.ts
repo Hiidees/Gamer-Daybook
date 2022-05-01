@@ -97,3 +97,11 @@ export const Button404Style = {
   WebkitBackgroundClip: "text !important",
   WebkitTextFillColor: "transparent",
 } as const;
+
+export const ButtonNewGameCreationStyle = {
+  "&:hover": {
+    background: "none",
+    color: "#662d91",
+  },
+  animation: `${blink} 2s linear `,
+} as const;

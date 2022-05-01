@@ -5,6 +5,8 @@ import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
 import useCookies from "../../../Hooks/useCookies";
+import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 export interface INewGameProps {
   setSnackbar: (
@@ -31,12 +33,14 @@ export function NewGame(props: INewGameProps) {
   const [infoMessage, setInfoMessage] = React.useState("");
   const vertical = "bottom";
   const horizontal = "center";
+  const translationState = useAppTranslation();
 
   window.addEventListener("resize", () =>
     resizeListener(window.innerHeight, setHeight)
   );
   return (
     <React.Fragment>
+      <MyHelmet title={translationState.translation["NewGame"]} />
       <AppbarGoBack />
       <Container maxWidth="sm">
         <Box

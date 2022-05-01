@@ -6,6 +6,7 @@ import * as React from "react";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
+import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 
 export interface IOptionProps {
   onSwitchTheme: () => void;
@@ -23,6 +24,7 @@ export function Option(props: IOptionProps) {
   );
   return (
     <React.Fragment>
+      <MyHelmet title={translationState.translation["Options"]} />
       <AppbarGoBack />
       <Container maxWidth="md">
         <Box
