@@ -8,13 +8,13 @@
       }
     },
     "color": {
-      "value": "#f9d4d3"
+      "value": "#2f253b"
     },
     "shape": {
-      "type": "star",
+      "type": "circle",
       "stroke": {
         "width": 2,
-        "color": "#862756"
+        "color": "#000000"
       },
       "polygon": {
         "nb_sides": 5
@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 50,
+      "value": 80,
       "random": true,
       "anim": {
         "enable": false,

@@ -91,11 +91,12 @@ export const ButtonDrawerStyle = {
 export const Button404Style = {
   "&:hover": {
     background: "none",
+    backgroundImage: "linear-gradient(45deg, red, blue)",
+    WebkitBackgroundClip: "text !important",
+    WebkitTextFillColor: "transparent",
   },
-  animation: `${colorChange} 2s linear infinite`,
-  //backgroundImage: "linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
-  WebkitBackgroundClip: "text !important",
-  WebkitTextFillColor: "transparent",
+  //animation: `${colorChange} 2s linear infinite`,
+  //backgroundImage:"linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
 } as const;
 
 export const ButtonNewGameCreationStyle = {
@@ -103,5 +104,6 @@ export const ButtonNewGameCreationStyle = {
     background: "none",
     color: "#662d91",
   },
-  animation: `${blink} 2s linear `,
+
+  color: "inherit",
 } as const;

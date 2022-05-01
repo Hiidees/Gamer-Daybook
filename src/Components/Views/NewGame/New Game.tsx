@@ -65,7 +65,7 @@ export function NewGame(props: INewGameProps) {
             horizontal={horizontal}
             openInfo={openInfo}
             message={infoMessage}
-            color={"#ffffff"}
+            color={"inherit"}
           />
         </Box>
       </Container>

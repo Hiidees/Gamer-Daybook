@@ -21,7 +21,7 @@ export default function Start(props: IStartProps) {
         variant="h1"
         sx={TypographyMenu}
         textAlign={"center"}
-        color="#dcd5dd"
+        color="inherit"
       >
         My gamer daybook
       </Typography>

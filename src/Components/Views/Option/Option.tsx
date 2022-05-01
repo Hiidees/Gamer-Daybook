@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
+import useCookies from "../../../Hooks/useCookies";
 import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
@@ -53,6 +54,23 @@ export function Option(props: IOptionProps) {
             >
               {translationState.translation["Change the language"]}
             </Button>
+            {/* <Button
+              sx={ButtonMenuStyle}
+              disableRipple
+              color="inherit"
+              onClick={() => {
+                useCookies.removeCookie("language");
+                useCookies.removeCookie("start");
+                useCookies.removeCookie("newgame");
+                useCookies.removeCookie("language");
+                useCookies.removeCookie("theme");
+                
+
+                goTo("");
+              }}
+            >
+              {translationState.translation["Delete all data"]}
+            </Button> */}
           </Stack>
         </Box>
       </Container>

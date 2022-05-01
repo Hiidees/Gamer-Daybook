@@ -2,12 +2,12 @@
   "palette": {
     "mode": "light",
     "info": {
-      "main": "#662d91",
-      "light": "#662d91",
-      "dark": "#662d91"
+      "main": "#2f253b",
+      "light": "#2f253b",
+      "dark": "#2f253b"
     },
     "background": {
-      "default": "#d2f5fa"
+      "default": "rgba(65,0,139,0.3);"
     }
   },
   "typography": {

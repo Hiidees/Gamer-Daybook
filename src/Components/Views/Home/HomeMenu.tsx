@@ -165,7 +165,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         horizontal={horizontal}
         openInfo={openInfo}
         message={infoMessage}
-        color={"white"}
+        color={"inherit"}
       />
       <NewGameCreation open={openDialog} setOpen={setOpenDialog} goTo={goTo} />
     </React.Fragment>

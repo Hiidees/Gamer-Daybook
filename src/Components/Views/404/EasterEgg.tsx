@@ -34,7 +34,7 @@ export function EasterEgg(props: IEasterEggProps) {
             variant="h1"
             textAlign={"center"}
             sx={{ fontSize: "35px" }}
-            color="#dcd5dd"
+            color="inherit"
           >
             Easter egg
           </Typography>
@@ -46,7 +46,7 @@ export function EasterEgg(props: IEasterEggProps) {
               goTo("");
             }}
           >
-            Go back to Home
+            Le margherite fuggono, quando nessuno le osserva
           </Button>
         </Stack>
       </Box>
