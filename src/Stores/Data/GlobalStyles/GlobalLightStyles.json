@@ -1,6 +1,5 @@
 {
   "body": {
-    "backgroundImage": "",
-    "backgroundSize": " 150%"
+    "background": "linear-gradient(to left, #43c6ac, #f8ffae);"
   }
 }
