@@ -77,11 +77,10 @@ export const ButtonLoginStyle = {
   marginBottom: 1,
 } as const;
 
-export const ButtonDrawerStyle = {
+export const ButtonDrawerAppbarStyle = {
   "&:hover": {
     background: "none",
     color: "#969696",
-   
   },
   "&:disabled": {
     animation: `${color} 0.8s linear forwards `,
@@ -95,7 +94,6 @@ export const Button404Style = {
     WebkitBackgroundClip: "text !important",
     WebkitTextFillColor: "transparent",
   },
- 
 } as const;
 
 export const ButtonNewGameCreationStyle = {
