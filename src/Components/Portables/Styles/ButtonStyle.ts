@@ -81,7 +81,7 @@ export const ButtonDrawerStyle = {
   "&:hover": {
     background: "none",
     color: "#969696",
-    // animation: `${shake} 0.8s linear forwards `,
+   
   },
   "&:disabled": {
     animation: `${color} 0.8s linear forwards `,
@@ -95,8 +95,7 @@ export const Button404Style = {
     WebkitBackgroundClip: "text !important",
     WebkitTextFillColor: "transparent",
   },
-  //animation: `${colorChange} 2s linear infinite`,
-  //backgroundImage:"linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
+ 
 } as const;
 
 export const ButtonNewGameCreationStyle = {

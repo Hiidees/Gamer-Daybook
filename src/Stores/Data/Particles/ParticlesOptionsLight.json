@@ -8,16 +8,16 @@
       }
     },
     "color": {
-      "value": "#00b5ff"
+      "value": "#b83ee2"
     },
     "shape": {
-      "type": "circle",
+      "type": "polygon",
       "stroke": {
         "width": 2,
-        "color": "#64fff5"
+        "color": "#7e02a8"
       },
       "polygon": {
-        "nb_sides": 5
+        "nb_sides": 4
       },
       "image": {
         "src": "/cheese.svg",
