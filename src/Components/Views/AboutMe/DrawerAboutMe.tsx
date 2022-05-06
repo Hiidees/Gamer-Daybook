@@ -20,7 +20,7 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
       }}
     >
       <Slide direction="right" timeout={2000} in={true}>
-        <Stack spacing={2} sx={StackDrawer}>
+        <Stack spacing={4} sx={StackDrawer}>
           <Button
             variant="text"
             color="inherit"
