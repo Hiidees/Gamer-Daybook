@@ -19,7 +19,6 @@ export interface IDrawerAboutMeProps {
     value: DisableKey,
     setVisibility: (value: DisableKey) => void
   ) => void;
-  visibility: DisableKey;
   setVisibility: (value: DisableKey) => void;
 }
 
@@ -29,7 +28,6 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
     setDisableKey,
     disable,
     setVisibilityKey,
-    visibility,
     setVisibility,
   } = props;
   const [disableHover, setDisableHover] = React.useState(false);

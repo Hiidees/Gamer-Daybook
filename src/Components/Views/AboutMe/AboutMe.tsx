@@ -43,7 +43,6 @@ export function AboutMe(props: IAboutMeProps) {
         disable={disable}
         setDisable={setDisable}
         setVisibilityKey={setVisibilityKey}
-        visibility={visibility}
         setVisibility={setVisibility}
       />
       <Container maxWidth="md">
@@ -53,7 +52,6 @@ export function AboutMe(props: IAboutMeProps) {
             disable={disable}
             setDisable={setDisable}
             setVisibilityKey={setVisibilityKey}
-            visibility={visibility}
             setVisibility={setVisibility}
           />
         )}

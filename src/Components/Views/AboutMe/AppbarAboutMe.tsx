@@ -21,7 +21,6 @@ export interface IAppbarAboutMeProps {
     value: DisableKey,
     setVisibility: (value: DisableKey) => void
   ) => void;
-  visibility: DisableKey;
   setVisibility: (value: DisableKey) => void;
 }
 
@@ -34,7 +33,6 @@ export function AppbarAboutMe(props: IAppbarAboutMeProps) {
     setDisableKey,
     disable,
     setVisibilityKey,
-    visibility,
     setVisibility,
   } = props;
   return (
