@@ -8,6 +8,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { DisableKey } from "../../../Domains/Enums/DisableKeyEnums";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { TypographyAboutMe } from "../../Portables/Styles/TypographyStyle";
+import Slide from "@mui/material/Slide";
 
 export interface IAboutMeProps {
   setDisableKey: (
@@ -63,20 +65,24 @@ export function AboutMe(props: IAboutMeProps) {
             //sx={{ height: height - 100 }}
           >
             {visibility === DisableKey.default && (
-              <Typography
-                variant="body2"
-                color="inherit"
-                sx={{ fontSize: 16, marginLeft: 2, marginTop: 3 }}
-              >
-                Default testo di prova
-              </Typography>
+              <React.Fragment>
+                <Slide direction="down" timeout={2000} in={true}>
+                  <Typography
+                    variant="body2"
+                    color="inherit"
+                    sx={TypographyAboutMe}
+                  >
+                    Default testo di prova
+                  </Typography>
+                </Slide>
+              </React.Fragment>
             )}
             {(disable === DisableKey.disableOne ||
               visibility === DisableKey.disableOne) && (
               <Typography
                 variant="body2"
                 color="inherit"
-                sx={{ fontSize: 16, marginLeft: 2, marginTop: 3 }}
+                sx={TypographyAboutMe}
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
                 euismod enim sed semper ultrices. Donec magna augue, bibendum eu
@@ -100,7 +106,7 @@ export function AboutMe(props: IAboutMeProps) {
               <Typography
                 variant="body2"
                 color="inherit"
-                sx={{ fontSize: 16, marginLeft: 2, marginTop: 3 }}
+                sx={TypographyAboutMe}
               >
                 Curabitur eleifend ex eu feugiat iaculis. Ut volutpat, lectus id
                 semper scelerisque, ante mauris accumsan ipsum, eget dapibus
@@ -124,7 +130,7 @@ export function AboutMe(props: IAboutMeProps) {
               <Typography
                 variant="body2"
                 color="inherit"
-                sx={{ fontSize: 16, marginLeft: 2, marginTop: 3 }}
+                sx={TypographyAboutMe}
               >
                 Donec neque ligula, laoreet at elit a, efficitur sollicitudin
                 quam. Sed bibendum erat congue lorem ornare maximus. Nam

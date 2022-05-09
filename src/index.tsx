@@ -5,6 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { AppThemeProvider } from "./Components/Providers/AppThemeProvider";
 import { AppTranslationProvider } from "./Components/Providers/AppTranslationProvider";
 import Favicon from "react-favicon";
+import Scrollbar from "react-scrollbars-custom";
 
 ReactDOM.render(
   <React.StrictMode>

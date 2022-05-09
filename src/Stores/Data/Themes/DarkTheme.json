@@ -12,5 +12,25 @@
       "fontFamily": "Syne Mono",
       "fontSize": 25
     }
+  },
+  "components":{
+      "MuiCssBaseline": {
+        "styleOverrides":{
+          "*::-webkit-scrollbar": {
+            "width": "15px"
+          },
+          "*::-webkit-scrollbar-track": {
+            "background": "#231b2b"
+          },
+          "*::-webkit-scrollbar-thumb": {
+            "background": "#382e44",
+            "borderRadius": "5px",
+            "outline": "1px solid slategrey"
+          }
+        
+        }
+       
+      }
   }
+   
 }
