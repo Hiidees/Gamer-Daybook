@@ -17,15 +17,16 @@
       "MuiCssBaseline": {
         "styleOverrides":{
           "*::-webkit-scrollbar": {
-            "width": "15px"
+            "width": "12px"
           },
           "*::-webkit-scrollbar-track": {
-            "background": "#231b2b"
+            "background": "#331a6b"
           },
           "*::-webkit-scrollbar-thumb": {
             "background": "#382e44",
-            "borderRadius": "5px",
-            "outline": "1px solid slategrey"
+            "borderRadius": "10px",
+            "outline": "1px solid",
+            "outline-color": "#110025"
           }
         
         }
