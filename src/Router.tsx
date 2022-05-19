@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AboutMeController } from "./Components/Controllers/AboutMeController";
+import { ContactController } from "./Components/Controllers/ContactController";
 import { EasterEggController } from "./Components/Controllers/EasterEggController";
 import { HomeController } from "./Components/Controllers/HomeController";
 import { LanguageController } from "./Components/Controllers/LanguageController";
@@ -32,6 +33,7 @@ export default function RouteProvider() {
               <Route path="/aboutme" element={<AboutMeController />} />
               <Route path="/languages" element={<LanguageController />} />
               <Route path="/option" element={<OptionController />} />
+              <Route path="/contact" element={<ContactController />} />
             </React.Fragment>
           )}
 

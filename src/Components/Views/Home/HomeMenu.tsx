@@ -112,7 +112,7 @@ export function HomeMenu(props: IHomeMenuProps) {
         sx={ButtonMenuStyle}
         disableRipple
         color="inherit"
-        onClick={() => goTo("contacts")}
+        onClick={() => goTo("contact")}
         onMouseOver={() => {
           setSnackbar(true, setOpenInfo);
           setMessage(

@@ -26,7 +26,7 @@
             "background": "#382e44",
             "borderRadius": "10px",
             "outline": "1px solid",
-            "outline-color": "#110025"
+            "outlineColor": "#110025"
           }
         
         }
