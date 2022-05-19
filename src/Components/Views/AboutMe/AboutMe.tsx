@@ -42,31 +42,37 @@ export function AboutMe(props: IAboutMeProps) {
       <AppbarAboutMe />
       <Container maxWidth="md">
         {matches && (
-          <DrawerAboutMe
-            setDisableKey={setDisableKey}
-            disable={disable}
-            setDisable={setDisable}
-            setVisibilityKey={setVisibilityKey}
-            setVisibility={setVisibility}
-          />
-        )}
-        <Container maxWidth="sm">
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ height: height - 100 }}
-          >
-            {matches && (
+          <React.Fragment>
+            <DrawerAboutMe
+              setDisableKey={setDisableKey}
+              disable={disable}
+              setDisable={setDisable}
+              setVisibilityKey={setVisibilityKey}
+              setVisibility={setVisibility}
+            />
+
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              sx={{ height: height - 100 }}
+            >
               <TypographysDesktop
                 disable={disable}
                 visibility={visibility}
                 height={height}
               />
-            )}
-            {!matches && <TypographysMobile />}
-          </Box>
-        </Container>
+            </Box>
+          </React.Fragment>
+        )}
+
+        {!matches && (
+          <React.Fragment>
+            <Box display="flex" alignItems="center" justifyContent="center">
+              <TypographysMobile />
+            </Box>
+          </React.Fragment>
+        )}
       </Container>
     </React.Fragment>
   );
