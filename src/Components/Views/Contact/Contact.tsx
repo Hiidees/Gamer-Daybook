@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CardMedia from "@mui/material/CardMedia";
 import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
@@ -12,13 +11,23 @@ import { useForm } from "react-hook-form";
 import { validationSchemaEmail } from "../../Utils/YupForm/ValidationSchemaEmail";
 import Alert, { AlertColor } from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
+import { ButtonMenuStyle } from "../../Portables/Styles/ButtonStyle";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import FormHelperText from "@mui/material/FormHelperText";
 
 export interface IContactProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
   sendEmail: (
     data: IEmailForm,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
-    setIsSendingEmail: (bool: boolean) => void
+    setIsSendingEmail: (bool: boolean) => void,
+    setCounterEmail: (counter: number) => void,
+    counterEmail: number
   ) => void;
 }
 
@@ -35,6 +44,7 @@ export function Contact(props: IContactProps) {
   const { resizeListener, sendEmail } = props;
 
   const [height, setHeight] = React.useState(window.innerHeight);
+  const [counterEmail, setCounterEmail] = React.useState(0);
   const [responseEmail, setResponseEmail] = React.useState<
     IEmailAlert | undefined
   >(undefined);
@@ -64,10 +74,45 @@ export function Contact(props: IContactProps) {
               item
               display={{ xs: "block", sm: "block", md: "block" }}
               xs={12}
-              sm={5}
+              sm={6}
               md={6}
             >
-              <CardMedia component="img" image="/cheese.svg" />
+              <Card
+                sx={{
+                  background: "transparent",
+                  marginBottom: { xs: 0, sm: 8, md: 13 },
+                }}
+                elevation={0}
+              >
+                <CardMedia
+                  component="img"
+                  sx={{ width: "30%", margin: "0px auto" }}
+                  image="/icon.png"
+                />
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    textAlign={"center"}
+                  >
+                    My Contacts:
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ justifyContent: "center" }}>
+                  <Stack direction={"row"}>
+                    <Button size="medium">IG</Button>
+                    <Button size="medium">FB</Button>
+                    <Button size="medium">GH</Button>
+                    <Button size="medium">GM</Button>
+                  </Stack>
+                </CardActions>
+              </Card>
+
+              {/*  <Stack>
+               
+                <Typography variant="h1">My contacts: </Typography>
+              </Stack> */}
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
               {responseEmail && (
@@ -75,14 +120,14 @@ export function Contact(props: IContactProps) {
                   severity={responseEmail.severity as AlertColor | undefined}
                   variant="filled"
                   sx={{ fontSize: "15px", marginBottom: 2 }}
-                  /* onClose={() => {
-                    onClickCloseAlert();
-                  }} */
                 >
                   {responseEmail.message}
                 </Alert>
               )}
               <FormControl fullWidth>
+                <FormHelperText sx={{ textAlign: "center", marginBottom: 1 }}>
+                  Write me a message!
+                </FormHelperText>
                 <TextField
                   label="Email"
                   id="email"
@@ -108,11 +153,19 @@ export function Contact(props: IContactProps) {
                 />
 
                 <Button
+                  sx={ButtonMenuStyle}
+                  disableRipple
+                  color="inherit"
                   type="submit"
                   onClick={handleSubmit((data) =>
-                    sendEmail(data, setResponseEmail, setIsSendingEmail)
+                    sendEmail(
+                      data,
+                      setResponseEmail,
+                      setIsSendingEmail,
+                      setCounterEmail,
+                      counterEmail
+                    )
                   )}
-                  variant="contained"
                   disabled={isSendingEmail}
                 >
                   {isSendingEmail ? (

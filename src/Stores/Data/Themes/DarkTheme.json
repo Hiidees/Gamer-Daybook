@@ -1,6 +1,10 @@
 {
   "palette": {
     "mode": "dark",
+    "primary": {
+      "main": "#662d91",
+      "dark": "#ff8f00"
+    },
     "info": {
       "main": "#662d91",
       "light": "#662d91",
@@ -30,8 +34,7 @@
           }
         
         }
-       
-      }
+    }
   }
    
 }
