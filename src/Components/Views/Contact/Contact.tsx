@@ -157,11 +157,6 @@ export function Contact(props: IContactProps) {
                   </Stack>
                 </CardActions>
               </Card>
-
-              {/*  <Stack>
-               
-                <Typography variant="h1">My contacts: </Typography>
-              </Stack> */}
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
               <FormControl fullWidth>
