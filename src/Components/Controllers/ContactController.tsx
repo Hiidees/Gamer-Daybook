@@ -32,8 +32,12 @@ export function ContactController(props: IContactControllerProps) {
         message: emailResponse.message + " " + emailAlertCode,
       };
       setResponseEmail(emailAlert);
-      setCounterEmail(counterEmail + 1);
-      useCookies.setCookieEmail("email", counterEmail + 1);
+      
+      if (emailResponse.status === "Success") {
+        setCounterEmail(counterEmail + 1);
+        useCookies.setCookieEmail("email", counterEmail + 1);
+      }
+      
     } else {
       setResponseEmail({
         severity: "error",
