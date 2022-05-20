@@ -19,6 +19,11 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import FormHelperText from "@mui/material/FormHelperText";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import IconButton from "@mui/material/IconButton";
+import EmailIcon from "@mui/icons-material/Email";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 export interface IContactProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -100,11 +105,55 @@ export function Contact(props: IContactProps) {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ justifyContent: "center" }}>
-                  <Stack direction={"row"}>
-                    <Button size="medium">IG</Button>
-                    <Button size="medium">FB</Button>
-                    <Button size="medium">GH</Button>
-                    <Button size="medium">GM</Button>
+                  <Stack direction={"row"} spacing={1}>
+                    <IconButton
+                      aria-label="github"
+                      disableRipple
+                      sx={{
+                        "&:hover": {
+                          color: "#ffda00",
+                        },
+                      }}
+                      size="medium"
+                    >
+                      <GitHubIcon />
+                    </IconButton>
+                    <IconButton
+                      disableRipple
+                      aria-label="instagram"
+                      sx={{
+                        "&:hover": {
+                          color: "#d70078",
+                        },
+                      }}
+                      size="medium"
+                    >
+                      <InstagramIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="facebook"
+                      disableRipple
+                      sx={{
+                        "&:hover": {
+                          color: "#004dd7",
+                        },
+                      }}
+                      size="medium"
+                    >
+                      <FacebookIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="gmail"
+                      disableRipple
+                      sx={{
+                        "&:hover": {
+                          color: "rgba(251,52,52,0.84)",
+                        },
+                      }}
+                      size="medium"
+                    >
+                      <EmailIcon />
+                    </IconButton>
                   </Stack>
                 </CardActions>
               </Card>
@@ -115,19 +164,19 @@ export function Contact(props: IContactProps) {
               </Stack> */}
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
-              {responseEmail && (
-                <Alert
-                  severity={responseEmail.severity as AlertColor | undefined}
-                  variant="filled"
-                  sx={{ fontSize: "15px", marginBottom: 2 }}
-                >
-                  {responseEmail.message}
-                </Alert>
-              )}
               <FormControl fullWidth>
                 <FormHelperText sx={{ textAlign: "center", marginBottom: 1 }}>
                   Write me a message!
                 </FormHelperText>
+                {responseEmail && (
+                  <Alert
+                    severity={responseEmail.severity as AlertColor | undefined}
+                    variant="filled"
+                    sx={{ fontSize: "15px", marginBottom: 2 }}
+                  >
+                    {responseEmail.message}
+                  </Alert>
+                )}
                 <TextField
                   label="Email"
                   id="email"
