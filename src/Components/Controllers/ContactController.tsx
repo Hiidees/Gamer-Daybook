@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Contact } from "../Views/Contact/Contact";
+import EmailHelper from "../../Temporary/Helpers/EmailHelper";
+import { Contact, IEmailAlert } from "../Views/Contact/Contact";
 
 export interface IContactControllerProps {}
 
@@ -8,8 +9,26 @@ export function ContactController(props: IContactControllerProps) {
     setHeight(height);
   }
 
-  function sendEmail(data: any) {
-    console.log("Oggetto: " + data.email + "\nmessage: " + data.message);
+  async function sendEmail(
+    data: any,
+    setResponseEmail: (emailData: IEmailAlert | undefined) => void,
+    setIsSendingEmail: (bool: boolean) => void
+  ) {
+    const _EmailHelper = new EmailHelper();
+    setIsSendingEmail(true);
+    const emailResponse = await _EmailHelper.sendEmailAsync(
+      data.email,
+      data.message
+    );
+    const emailAlertCode =
+      emailResponse.status == "Error" ? emailResponse.statusCode : "";
+    const emailAlert: IEmailAlert = {
+      severity: emailResponse.status == "Success" ? "success" : "error",
+      message: emailResponse.message + " " + emailAlertCode,
+    };
+    setResponseEmail(emailAlert);
+    setIsSendingEmail(false);
+    console.log(emailResponse);
   }
   return <Contact resizeListener={resizeListener} sendEmail={sendEmail} />;
 }

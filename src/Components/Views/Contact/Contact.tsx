@@ -10,10 +10,16 @@ import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { validationSchemaEmail } from "../../Utils/YupForm/ValidationSchemaEmail";
+import Alert, { AlertColor } from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export interface IContactProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
-  sendEmail: (data: IEmailForm) => void;
+  sendEmail: (
+    data: IEmailForm,
+    setResponseEmail: (emailData: IEmailAlert | undefined) => void,
+    setIsSendingEmail: (bool: boolean) => void
+  ) => void;
 }
 
 interface IEmailForm {
@@ -21,10 +27,18 @@ interface IEmailForm {
   message: string;
 }
 
+export interface IEmailAlert {
+  severity: string;
+  message: string;
+}
 export function Contact(props: IContactProps) {
   const { resizeListener, sendEmail } = props;
 
   const [height, setHeight] = React.useState(window.innerHeight);
+  const [responseEmail, setResponseEmail] = React.useState<
+    IEmailAlert | undefined
+  >(undefined);
+  const [isSendingEmail, setIsSendingEmail] = React.useState(false);
   window.addEventListener("resize", () =>
     resizeListener(window.innerHeight, setHeight)
   );
@@ -56,17 +70,18 @@ export function Contact(props: IContactProps) {
               <CardMedia component="img" image="/cheese.svg" />
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
-              {/* {errorMessages !== "" && (
-            <Alert
-              severity="error"
-              variant="filled"
-              onClose={() => {
-                onClickCloseAlert();
-              }}
-            >
-              {errorMessages}
-            </Alert>
-          )} */}
+              {responseEmail && (
+                <Alert
+                  severity={responseEmail.severity as AlertColor | undefined}
+                  variant="filled"
+                  sx={{ fontSize: "15px", marginBottom: 2 }}
+                  /* onClose={() => {
+                    onClickCloseAlert();
+                  }} */
+                >
+                  {responseEmail.message}
+                </Alert>
+              )}
               <FormControl fullWidth>
                 <TextField
                   label="Email"
@@ -76,8 +91,7 @@ export function Contact(props: IContactProps) {
                   {...register("email")}
                   error={!!errors.email}
                   helperText={errors.email && errors.email?.message}
-                  /*  disabled={isLoggingIn}
-                   */
+                  disabled={isSendingEmail}
                 />
 
                 <TextField
@@ -90,18 +104,22 @@ export function Contact(props: IContactProps) {
                   {...register("message")}
                   error={!!errors.message}
                   helperText={errors.message && errors.message?.message}
-                  /*  disabled={isLoggingIn}
-                   */
+                  disabled={isSendingEmail}
                 />
 
                 <Button
                   type="submit"
-                  onClick={handleSubmit((data) => sendEmail(data))}
+                  onClick={handleSubmit((data) =>
+                    sendEmail(data, setResponseEmail, setIsSendingEmail)
+                  )}
                   variant="contained"
-                  /*   disabled={isLoggingIn}
-                   */
+                  disabled={isSendingEmail}
                 >
-                  Send mail
+                  {isSendingEmail ? (
+                    <CircularProgress color="inherit" />
+                  ) : (
+                    "Send Email"
+                  )}
                 </Button>
               </FormControl>
             </Grid>
