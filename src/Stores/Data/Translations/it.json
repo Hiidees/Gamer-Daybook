@@ -17,5 +17,12 @@
   "Change configuration": "Modifica Impostazioni",
   "Go back to Start Menu": "Torna al menu principale",
   "Change theme": "Cambia il tema",
-  "Delete all data": "Cancella tutti i dati di salvataggio"
+  "Delete all data": "Cancella tutti i dati di salvataggio",
+  "Write me a message": "Scrivimi un messaggio!",
+  "message": "messaggio",
+  "send email": "manda una mail",
+  "Social Contact": "Contatti Social",
+  "You can not send more of two mail in one day": "Non puoi inviare più di due email al giorno!",
+  "Mail sended": "Email inviata con successo!"
+
 }

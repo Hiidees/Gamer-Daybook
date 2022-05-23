@@ -1,4 +1,6 @@
+import { IconButton, IconButtonProps } from "@mui/material";
 import { keyframes } from "@mui/system";
+import { styled } from "@mui/material";
 
 const blink = keyframes`
   from { opacity: 0; }
@@ -104,3 +106,12 @@ export const ButtonNewGameCreationStyle = {
 
   color: "inherit",
 } as const;
+
+type SocialButtonProps = {
+  myColor: string;
+}
+export const SocialButton = styled(IconButton)<SocialButtonProps>(({ myColor }) => ({
+  "&:hover": {
+    color: myColor,
+  },
+}));

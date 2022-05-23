@@ -17,5 +17,11 @@
   "Change configuration": "Change configuration",
   "Go back to Start Menu": "Go back to Start Menu",
   "Change theme": "Change theme",
-  "Delete all data": "Delete all data"
+  "Delete all data": "Delete all data",
+  "Write me a message": "Write me a message",
+  "message": "message",
+  "send email": "send a mail",
+  "Social Contact": "Social Contact",
+  "You can not send more of two mail in one day": "You can not send more of two mail in one day!",
+  "Mail sended": "Mail sended!"
 }

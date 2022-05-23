@@ -30,6 +30,7 @@ export default class HttpServicesAdapter {
   }
 
   public async postAsync(path: string, data: any): Promise<any> {
+    
     const requestConfig: AxiosRequestConfig = {
       method: "post",
       baseURL: `${this._baseUrl}/${path}`,

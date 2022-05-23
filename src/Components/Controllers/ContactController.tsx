@@ -1,4 +1,5 @@
 import * as React from "react";
+import useAppTranslation from "../../Hooks/useAppTranslation";
 import useCookies from "../../Hooks/useCookies";
 import EmailHelper from "../../Temporary/Helpers/EmailHelper";
 import { Contact, IEmailAlert } from "../Views/Contact/Contact";
@@ -6,6 +7,7 @@ import { Contact, IEmailAlert } from "../Views/Contact/Contact";
 export interface IContactControllerProps {}
 
 export function ContactController(props: IContactControllerProps) {
+  const translationState = useAppTranslation();
   function resizeListener(height: number, setHeight: (height: number) => void) {
     setHeight(height);
   }
@@ -25,11 +27,18 @@ export function ContactController(props: IContactControllerProps) {
         data.email,
         data.message
       );
+
       const emailAlertCode =
         emailResponse.status == "Error" ? emailResponse.statusCode : "";
+
+      const emailMessage =
+        emailResponse.status == "Error"
+          ? emailResponse.message
+          : translationState.translation["Mail sended"];
+
       const emailAlert: IEmailAlert = {
         severity: emailResponse.status == "Success" ? "success" : "error",
-        message: emailResponse.message + " " + emailAlertCode,
+        message: emailMessage + " " + emailAlertCode,
       };
       setResponseEmail(emailAlert);
 
@@ -40,7 +49,10 @@ export function ContactController(props: IContactControllerProps) {
     } else {
       setResponseEmail({
         severity: "error",
-        message: "Non puoi inviare più di due email al giorno!",
+        message:
+          translationState.translation[
+            "You can not send more of two mail in one day"
+          ],
       });
     }
     setIsSendingEmail(false);
