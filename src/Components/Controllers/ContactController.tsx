@@ -29,10 +29,10 @@ export function ContactController(props: IContactControllerProps) {
       );
 
       const emailAlertCode =
-        emailResponse.status == "Error" ? emailResponse.statusCode : "";
+        emailResponse.status === "Error" ? emailResponse.statusCode : "";
 
       const emailMessage =
-        emailResponse.status == "Error"
+        emailResponse.status === "Error"
           ? emailResponse.message
           : translationState.translation["Mail sended"];
 
