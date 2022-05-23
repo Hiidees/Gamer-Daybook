@@ -37,7 +37,7 @@ export function ContactController(props: IContactControllerProps) {
           : translationState.translation["Mail sended"];
 
       const emailAlert: IEmailAlert = {
-        severity: emailResponse.status == "Success" ? "success" : "error",
+        severity: emailResponse.status === "Success" ? "success" : "error",
         message: emailMessage + " " + emailAlertCode,
       };
       setResponseEmail(emailAlert);
