@@ -24,6 +24,7 @@ import IconButton from "@mui/material/IconButton";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export interface IContactProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -75,6 +76,68 @@ export function Contact(props: IContactProps) {
           sx={{ height: height - 100 }}
         >
           <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} sm={6} md={6}>
+              <FormControl fullWidth>
+                <FormHelperText sx={{ textAlign: "center", marginBottom: 1 }}>
+                  Write me a message!
+                </FormHelperText>
+                {responseEmail && (
+                  <Alert
+                    severity={responseEmail.severity as AlertColor | undefined}
+                    variant="filled"
+                    sx={{ fontSize: "15px", marginBottom: 2 }}
+                  >
+                    {responseEmail.message}
+                  </Alert>
+                )}
+                <TextField
+                  label="Email"
+                  id="email"
+                  size="medium"
+                  sx={{ marginBottom: 2 }}
+                  {...register("email")}
+                  error={!!errors.email}
+                  helperText={errors.email && errors.email?.message}
+                  disabled={isSendingEmail}
+                />
+
+                <TextField
+                  label="message"
+                  id="message"
+                  size="medium"
+                  multiline
+                  rows={2}
+                  sx={{ marginBottom: 2 }}
+                  {...register("message")}
+                  error={!!errors.message}
+                  helperText={errors.message && errors.message?.message}
+                  disabled={isSendingEmail}
+                />
+
+                <Button
+                  sx={ButtonMenuStyle}
+                  disableRipple
+                  color="inherit"
+                  type="submit"
+                  onClick={handleSubmit((data) =>
+                    sendEmail(
+                      data,
+                      setResponseEmail,
+                      setIsSendingEmail,
+                      setCounterEmail,
+                      counterEmail
+                    )
+                  )}
+                  disabled={isSendingEmail}
+                >
+                  {isSendingEmail ? (
+                    <CircularProgress color="inherit" />
+                  ) : (
+                    "Send Email"
+                  )}
+                </Button>
+              </FormControl>
+            </Grid>
             <Grid
               item
               display={{ xs: "block", sm: "block", md: "block" }}
@@ -154,71 +217,21 @@ export function Contact(props: IContactProps) {
                     >
                       <EmailIcon />
                     </IconButton>
+                    <IconButton
+                      aria-label="gmail"
+                      disableRipple
+                      sx={{
+                        "&:hover": {
+                          color: "#008cf0d6",
+                        },
+                      }}
+                      size="medium"
+                    >
+                      <LinkedInIcon />
+                    </IconButton>
                   </Stack>
                 </CardActions>
               </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={6}>
-              <FormControl fullWidth>
-                <FormHelperText sx={{ textAlign: "center", marginBottom: 1 }}>
-                  Write me a message!
-                </FormHelperText>
-                {responseEmail && (
-                  <Alert
-                    severity={responseEmail.severity as AlertColor | undefined}
-                    variant="filled"
-                    sx={{ fontSize: "15px", marginBottom: 2 }}
-                  >
-                    {responseEmail.message}
-                  </Alert>
-                )}
-                <TextField
-                  label="Email"
-                  id="email"
-                  size="medium"
-                  sx={{ marginBottom: 2 }}
-                  {...register("email")}
-                  error={!!errors.email}
-                  helperText={errors.email && errors.email?.message}
-                  disabled={isSendingEmail}
-                />
-
-                <TextField
-                  label="message"
-                  id="message"
-                  size="medium"
-                  multiline
-                  rows={2}
-                  sx={{ marginBottom: 2 }}
-                  {...register("message")}
-                  error={!!errors.message}
-                  helperText={errors.message && errors.message?.message}
-                  disabled={isSendingEmail}
-                />
-
-                <Button
-                  sx={ButtonMenuStyle}
-                  disableRipple
-                  color="inherit"
-                  type="submit"
-                  onClick={handleSubmit((data) =>
-                    sendEmail(
-                      data,
-                      setResponseEmail,
-                      setIsSendingEmail,
-                      setCounterEmail,
-                      counterEmail
-                    )
-                  )}
-                  disabled={isSendingEmail}
-                >
-                  {isSendingEmail ? (
-                    <CircularProgress color="inherit" />
-                  ) : (
-                    "Send Email"
-                  )}
-                </Button>
-              </FormControl>
             </Grid>
           </Grid>
         </Box>
