@@ -40,7 +40,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               aria-label="github"
               disableRipple
-              myColor="#ffda00"
+              mycolor="#ffda00"
               size="medium"
               onClick={() => window.open("https://github.com/Hiidees")}
             >
@@ -51,7 +51,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               disableRipple
               aria-label="instagram"
-              myColor="#d70078"
+              mycolor="#d70078"
               size="medium"
               onClick={() =>
                 window.open(
@@ -66,7 +66,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               aria-label="facebook"
               disableRipple
-              myColor="#004dd7"
+              mycolor="#004dd7"
               size="medium"
               onClick={() =>
                 window.open("https://www.facebook.com/marco.carollo.56")
@@ -80,7 +80,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               aria-label="gmail"
               disableRipple
-              myColor="rgba(251,52,52,0.84)"
+              mycolor="rgba(251,52,52,0.84)"
               size="medium"
               onClick={() =>
                 window.open(
@@ -95,7 +95,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               aria-label="linkedin"
               disableRipple
-              myColor="#008cf0d6"
+              mycolor="#008cf0d6"
               size="medium"
               onClick={() =>
                 window.open(

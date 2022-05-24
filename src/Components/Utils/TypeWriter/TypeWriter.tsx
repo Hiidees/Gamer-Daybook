@@ -8,6 +8,9 @@ import {
 } from "../../Portables/Styles/ButtonStyle";
 import Button from "@mui/material/Button";
 import { TypographyTypeWriter } from "../../Portables/Styles/TypographyStyle";
+import { StackTypewriter } from "../../Portables/Styles/StackStyle";
+import { CSSTransition } from "react-transition-group";
+import "./styleDisapper.css";
 
 export interface ITypeWriterProps {
   setSnackbar: (
@@ -40,6 +43,7 @@ export function TypeWriter(props: ITypeWriterProps) {
     typewriterMessage2,
   } = props;
   const [choice, setChoice] = React.useState(false);
+  const [isContinue, setIsContinue] = React.useState(false);
 
   return (
     <Typography
@@ -48,31 +52,31 @@ export function TypeWriter(props: ITypeWriterProps) {
       sx={TypographyTypeWriter}
       color="inherit"
     >
-      <Typewriter
-        options={{
-          autoStart: true,
-          delay: 70,
-          cursor: "",
-        }}
-        onInit={(typewriter) => {
-          typewriter
-            .pauseFor(1500)
-            .typeString(typewriterMessage1)
-            .pauseFor(1000)
-            .typeString(typewriterMessage2)
-            .callFunction(() => {
-              setChoice(true);
-            })
-            .start();
-        }}
-      />
+      <CSSTransition timeout={200} classNames="my-node">
+        <Typewriter
+          options={{
+            autoStart: true,
+            delay: 70,
+            cursor: "",
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .pauseFor(1500)
+              .typeString(typewriterMessage1)
+              .pauseFor(1000)
+              .typeString(typewriterMessage2)
+              .callFunction(() => {
+                setChoice(true);
+              })
+              .start();
+
+            isContinue && typewriter.deleteAll().start();
+          }}
+        />
+      </CSSTransition>
 
       {choice && (
-        <Stack
-          direction="row"
-          spacing={5}
-          sx={{ justifyContent: "space-between" }}
-        >
+        <Stack direction="row" spacing={5} sx={StackTypewriter}>
           <Button
             sx={ButtonSkipStyle}
             disableRipple
@@ -95,6 +99,9 @@ export function TypeWriter(props: ITypeWriterProps) {
             }}
             onMouseLeave={() => setSnackbar(false, setOpenInfo)}
             color="inherit"
+            onClick={() => {
+              setIsContinue(!isContinue);
+            }}
           >
             Continue
           </Button>
@@ -103,3 +110,4 @@ export function TypeWriter(props: ITypeWriterProps) {
     </Typography>
   );
 }
+

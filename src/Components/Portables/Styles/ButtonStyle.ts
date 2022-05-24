@@ -108,10 +108,10 @@ export const ButtonNewGameCreationStyle = {
 } as const;
 
 type SocialButtonProps = {
-  myColor: string;
+  mycolor: string;
 }
-export const SocialButton = styled(IconButton)<SocialButtonProps>(({ myColor }) => ({
+export const SocialButton = styled(IconButton)<SocialButtonProps>(({ mycolor }) => ({
   "&:hover": {
-    color: myColor,
+    color: mycolor,
   },
 }));
