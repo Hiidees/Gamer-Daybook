@@ -10,7 +10,7 @@ export default class EmailHelper {
     const reqBody = { email, message };
 
     try {
-      const response = await this._adapter.postAsync("email", reqBody);
+      const response = await this._adapter.postAsync("message", reqBody);
       return response as any;
     } catch (err: unknown) {
       if (err) {
