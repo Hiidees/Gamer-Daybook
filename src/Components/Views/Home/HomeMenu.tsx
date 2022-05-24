@@ -8,6 +8,7 @@ import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
 import useCookies from "../../../Hooks/useCookies";
 import { NewGameCreation } from "./NewGameCreation";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
+import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
 
 export interface IHomeMenuProps {
   setSnackbar: (
@@ -48,22 +49,17 @@ export function HomeMenu(props: IHomeMenuProps) {
   return (
     <React.Fragment>
       <Slide direction="down" timeout={2000} in={true}>
-        <Alert
-          icon={<Avatar src="/me.jpg" />}
-          variant="outlined"
-          color="info"
-          sx={{
-            "@media (min-width:600px)": {
-              fontSize: "20px",
-            },
-            fontSize: "15px",
-          }}
-        >
-          {
-            translationState.translation[
-              "Hi! I'm Marco, welcome to my website!"
-            ]
-          }
+        <Alert icon={<Avatar src="/me.jpg" />} variant="outlined" color="info">
+          <TypeWriter
+            typewriterMessage1={
+              translationState.translation[
+                "Hi! I'm Marco, welcome to my website!"
+              ]
+            }
+            typewriterMessage2=""
+            cursor="|"
+            initialPause={0}
+          />
         </Alert>
       </Slide>
       <Button

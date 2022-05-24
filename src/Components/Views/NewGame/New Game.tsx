@@ -7,6 +7,8 @@ import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
 import useCookies from "../../../Hooks/useCookies";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
+import Stack from "@mui/material/Stack";
+import { SkipContinue } from "./SkipContinue";
 
 export interface INewGameProps {
   setSnackbar: (
@@ -34,6 +36,9 @@ export function NewGame(props: INewGameProps) {
   const vertical = "bottom";
   const horizontal = "center";
   const translationState = useAppTranslation();
+  const [orderTypeWriter, setOrderTypeWriter] = React.useState(0);
+  const [choice, setChoice] = React.useState(false);
+  const [isContinue, setIsContinue] = React.useState(false);
 
   window.addEventListener("resize", () =>
     resizeListener(window.innerHeight, setHeight)
@@ -47,26 +52,76 @@ export function NewGame(props: INewGameProps) {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{ height: height - 100 }}
+          sx={{
+            height: !isContinue ? height - 100 : "none",
+          }}
         >
           {!useCookies.getCookie("newgame") &&
             useCookies.setCookie("newgame", "true")}
-          <TypeWriter
-            setSnackbar={setSnackbar}
-            setMessage={setMessage}
-            goTo={goTo}
-            setInfoMessage={setInfoMessage}
-            setOpenInfo={setOpenInfo}
-            typewriterMessage1={typewriterMessages.typewriterMessage1}
-            typewriterMessage2={typewriterMessages.typewriterMessage2}
-          />
-          <SnackbarInfo
-            vertical={vertical}
-            horizontal={horizontal}
-            openInfo={openInfo}
-            message={infoMessage}
-            color={"inherit"}
-          />
+          {!isContinue && (
+            <React.Fragment>
+              <Stack>
+                <TypeWriter
+                  setChoice={setChoice}
+                  typewriterMessage1={typewriterMessages.typewriterMessage1}
+                  typewriterMessage2={typewriterMessages.typewriterMessage2}
+                  cursor=""
+                  initialPause={1500}
+                />
+                {choice && (
+                  <SkipContinue
+                    setSnackbar={setSnackbar}
+                    setInfoMessage={setInfoMessage}
+                    setIsContinue={setIsContinue}
+                    setMessage={setMessage}
+                    goTo={goTo}
+                    setOpenInfo={setOpenInfo}
+                  />
+                )}
+                <SnackbarInfo
+                  vertical={vertical}
+                  horizontal={horizontal}
+                  openInfo={openInfo}
+                  message={infoMessage}
+                  color={"inherit"}
+                />
+              </Stack>
+            </React.Fragment>
+          )}
+          {isContinue && (
+            <React.Fragment>
+              <Stack>
+                <TypeWriter
+                  setOrderTypeWriter={setOrderTypeWriter}
+                  orderTypeWriter={orderTypeWriter}
+                  cursor=""
+                  initialPause={1500}
+                  typewriterMessage1={typewriterMessages.typewriterMessage1}
+                  typewriterMessage2={typewriterMessages.typewriterMessage2}
+                />
+                {orderTypeWriter >= 1 && (
+                  <TypeWriter
+                    setOrderTypeWriter={setOrderTypeWriter}
+                    orderTypeWriter={orderTypeWriter}
+                    cursor=""
+                    initialPause={1500}
+                    typewriterMessage1={typewriterMessages.typewriterMessage1}
+                    typewriterMessage2={typewriterMessages.typewriterMessage2}
+                  />
+                )}
+                {orderTypeWriter >= 2 && (
+                  <TypeWriter
+                    setOrderTypeWriter={setOrderTypeWriter}
+                    orderTypeWriter={orderTypeWriter}
+                    cursor=""
+                    initialPause={1500}
+                    typewriterMessage1={typewriterMessages.typewriterMessage1}
+                    typewriterMessage2={typewriterMessages.typewriterMessage2}
+                  />
+                )}
+              </Stack>
+            </React.Fragment>
+          )}
         </Box>
       </Container>
     </React.Fragment>

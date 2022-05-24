@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { PaperDialog } from "../../Portables/Styles/PaperStyle";
 import { ButtonNewGameCreationStyle } from "../../Portables/Styles/ButtonStyle";
+import { DialogTitleNewGame } from "../../Portables/Styles/TypographyStyle";
 
 export interface INewGameCreationProps {
   open: boolean;
@@ -24,7 +25,9 @@ export function NewGameCreation(props: INewGameCreationProps) {
         style: PaperDialog,
       }}
     >
-      <DialogTitle>Are you sure to start a new game?</DialogTitle>
+      <DialogTitle sx={DialogTitleNewGame}>
+        Are you sure to start a new game?
+      </DialogTitle>
       <Stack direction={"row"} justifyContent="center" spacing={4}>
         <Button sx={ButtonNewGameCreationStyle} onClick={() => goTo("newgame")}>
           Yes

@@ -16,6 +16,7 @@ export const TypographyMenu = {
 
 export const TypographyTypeWriter = {
   textAlign: "center",
+   fontSize: "19px",
 } as const;
 
 export const TypographyAboutMe = {
@@ -26,3 +27,6 @@ export const TypographyAboutMe = {
   animation: `${blink} 2s linear`,
 } as const;
 
+export const DialogTitleNewGame = {
+  textAlign: "center",
+} as const;
