@@ -17,12 +17,19 @@ import {
   FormControlStyle,
 } from "../../Portables/Styles/FormTextfieldStyle";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Box from "@mui/material/Box";
 
 export interface IFormSendEmailProps {
   sendEmail: (
     data: IEmailForm,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
+    setExpand: (bool: boolean) => void,
     setCounterEmail: (counter: number) => void,
     counterEmail: number
   ) => void;
@@ -32,6 +39,7 @@ export function FormSendEmail(props: IFormSendEmailProps) {
   const { sendEmail } = props;
   const translationState = useAppTranslation();
   const [counterEmail, setCounterEmail] = React.useState(0);
+  const [expand, setExpand] = React.useState(false);
   const [responseEmail, setResponseEmail] = React.useState<
     IEmailAlert | undefined
   >(undefined);
@@ -45,7 +53,7 @@ export function FormSendEmail(props: IFormSendEmailProps) {
   return (
     <FormControl fullWidth sx={FormControlStyle}>
       <FormHelperText sx={FormTextHelperStyle}>
-        {translationState.translation["Write me a message"]}
+        {translationState.translation["Do you want write me a message?"]}
       </FormHelperText>
       {responseEmail && (
         <Alert
@@ -56,52 +64,83 @@ export function FormSendEmail(props: IFormSendEmailProps) {
           {responseEmail.message}
         </Alert>
       )}
-      <TextField
-        label="Email"
-        id="email"
-        size="medium"
-        sx={FormTextfield}
-        {...register("email")}
-        error={!!errors.email}
-        helperText={errors.email && errors.email?.message}
-        disabled={isSendingEmail}
-      />
-
-      <TextField
-        label={translationState.translation["message"]}
-        id="message"
-        size="medium"
-        multiline
-        rows={2}
-        sx={FormTextfield}
-        {...register("message")}
-        error={!!errors.message}
-        helperText={errors.message && errors.message?.message}
-        disabled={isSendingEmail}
-      />
-
-      <Button
-        sx={ButtonMenuStyle}
-        disableRipple
-        color="inherit"
-        type="submit"
-        onClick={handleSubmit((data) =>
-          sendEmail(
-            data,
-            setResponseEmail,
-            setIsSendingEmail,
-            setCounterEmail,
-            counterEmail
-          )
-        )}
-        disabled={isSendingEmail}
+      <Accordion
+        sx={{
+          background: "transparent",
+          boxShadow: "none",
+          "&::before": {
+            backgroundColor: "transparent",
+          },
+        }}
+        expanded={expand}
       >
-        {isSendingEmail ? (
-          <CircularProgress color="inherit" />
-        ) : (
-          translationState.translation["send email"]
-        )}
-      </Button>
+        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+          <Button
+            sx={ButtonMenuStyle}
+            disableRipple
+            color="inherit"
+            fullWidth
+            type="submit"
+            onClick={() => setExpand(!expand)}
+          >
+            {expand
+              ? translationState.translation["Close"]
+              : translationState.translation["Click here!"]}
+          </Button>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box>
+            <TextField
+              label="Email"
+              id="email"
+              fullWidth
+              sx={FormTextfield}
+              {...register("email")}
+              error={!!errors.email}
+              helperText={errors.email && errors.email?.message}
+              disabled={isSendingEmail}
+            />
+
+            <TextField
+              label={translationState.translation["message"]}
+              id="message"
+              fullWidth
+              multiline
+              rows={2}
+              sx={FormTextfield}
+              {...register("message")}
+              error={!!errors.message}
+              helperText={errors.message && errors.message?.message}
+              disabled={isSendingEmail}
+            />
+
+            <Button
+              sx={ButtonMenuStyle}
+              disableRipple
+              color="inherit"
+              fullWidth
+              type="submit"
+              onClick={handleSubmit((data) =>
+                sendEmail(
+                  data,
+                  setResponseEmail,
+                  setIsSendingEmail,
+                  setExpand,
+                  setCounterEmail,
+                  counterEmail
+                )
+              )}
+              disabled={isSendingEmail}
+            >
+              {isSendingEmail ? (
+                <CircularProgress color="inherit" />
+              ) : (
+                translationState.translation["send email"]
+              )}
+            </Button>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
     </FormControl>
   );
 }

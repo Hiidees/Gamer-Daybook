@@ -18,10 +18,12 @@
   "Go back to Start Menu": "Go back to Start Menu",
   "Change theme": "Change theme",
   "Delete all data": "Delete all data",
-  "Write me a message": "Write me a message",
+  "Do you want write me a message?": "Do you want write me a message?",
   "message": "message",
   "send email": "send me a message",
   "Social Contact": "Social Contact",
   "You can not send more of two mail in one day": "You can not send more of two mail in one day!",
-  "Mail sended": "Message sended!"
+  "Mail sended": "Message sended!",
+  "Click here!": "Click here!",
+  "Close": "Close"
 }

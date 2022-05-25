@@ -14,6 +14,7 @@ export interface IContactProps {
     data: IEmailForm,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
+    setExpand: (bool: boolean) => void,
     setCounterEmail: (counter: number) => void,
     counterEmail: number
   ) => void;

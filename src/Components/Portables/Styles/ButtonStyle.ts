@@ -113,5 +113,5 @@ type SocialButtonProps = {
 export const SocialButton = styled(IconButton)<SocialButtonProps>(({ mycolor }) => ({
   "&:hover": {
     color: mycolor,
-  },
+  }
 }));

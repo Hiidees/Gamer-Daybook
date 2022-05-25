@@ -69,7 +69,6 @@ export function HomeMenu(props: IHomeMenuProps) {
         onClick={() => {
           if (useCookies.getCookie("newgame")) {
             setOpenDialog(true);
-            console.log("ciao");
           } else {
             goTo("newgame");
           }

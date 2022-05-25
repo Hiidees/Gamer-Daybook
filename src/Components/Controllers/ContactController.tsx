@@ -16,6 +16,7 @@ export function ContactController(props: IContactControllerProps) {
     data: any,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
+    setExpand: (bool: boolean) => void,
     setCounterEmail: (counter: number) => void,
     counterEmail: number
   ) {
@@ -56,6 +57,7 @@ export function ContactController(props: IContactControllerProps) {
       });
     }
     setIsSendingEmail(false);
+    setExpand(false);
   }
   return <Contact resizeListener={resizeListener} sendEmail={sendEmail} />;
 }

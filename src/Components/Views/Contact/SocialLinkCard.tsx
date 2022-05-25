@@ -44,7 +44,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
               size="medium"
               onClick={() => window.open("https://github.com/Hiidees")}
             >
-              <GitHubIcon />
+              <GitHubIcon sx={{ fontSize: "50px" }} />
             </SocialButton>
           </Slide>
           <Slide direction="up" timeout={2000} in={true}>
@@ -59,7 +59,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
                 )
               }
             >
-              <InstagramIcon />
+              <InstagramIcon sx={{ fontSize: "50px" }} />
             </SocialButton>
           </Slide>
           <Slide direction="down" timeout={2000} in={true}>
@@ -72,7 +72,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
                 window.open("https://www.facebook.com/marco.carollo.56")
               }
             >
-              <FacebookIcon />
+              <FacebookIcon sx={{ fontSize: "50px" }} />
             </SocialButton>
           </Slide>
 
@@ -88,7 +88,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
                 )
               }
             >
-              <EmailIcon />
+              <EmailIcon sx={{ fontSize: "50px" }} />
             </SocialButton>
           </Slide>
           <Slide direction="right" timeout={2000} in={true}>
@@ -103,7 +103,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
                 )
               }
             >
-              <LinkedInIcon />
+              <LinkedInIcon sx={{ fontSize: "50px" }} />
             </SocialButton>
           </Slide>
         </Stack>

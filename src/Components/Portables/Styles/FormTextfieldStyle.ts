@@ -11,7 +11,8 @@ export const FormControlStyle = {
 
 export const FormTextHelperStyle = {
  textAlign: "center",
- marginBottom: 1
+ marginBottom: 1,
+ fontSize: "22px"
 } as const;
 
 export const FormAlertStyle = {

@@ -18,11 +18,13 @@
   "Go back to Start Menu": "Torna al menu principale",
   "Change theme": "Cambia il tema",
   "Delete all data": "Cancella tutti i dati di salvataggio",
-  "Write me a message": "Scrivimi un messaggio!",
+  "Do you want write me a message?": "Vuoi scrivermi un messaggio?",
   "message": "messaggio",
   "send email": "inviami un messaggio",
   "Social Contact": "Contatti Social",
   "You can not send more of two mail in one day": "Non puoi inviare più di due messaggi al giorno!",
-  "Mail sended": "Messaggio inviata con successo!"
+  "Mail sended": "Messaggio inviata con successo!",
+  "Click here!": "Clicca qui!",
+  "Close": "Chiudi"
 
 }
