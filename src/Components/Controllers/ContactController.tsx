@@ -14,6 +14,7 @@ export function ContactController(props: IContactControllerProps) {
 
   async function sendEmail(
     data: any,
+    value: number | null,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
     setExpand: (bool: boolean) => void,
@@ -26,7 +27,8 @@ export function ContactController(props: IContactControllerProps) {
     if (counterEmail < 2) {
       const emailResponse = await _EmailHelper.sendEmailAsync(
         data.email,
-        data.message
+        data.message,
+        value
       );
 
       const emailAlertCode =

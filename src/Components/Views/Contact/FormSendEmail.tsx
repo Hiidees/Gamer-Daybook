@@ -23,10 +23,12 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Box from "@mui/material/Box";
+import PageRating from "./PageRating";
 
 export interface IFormSendEmailProps {
   sendEmail: (
     data: IEmailForm,
+    value: number | null,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
     setExpand: (bool: boolean) => void,
@@ -40,6 +42,7 @@ export function FormSendEmail(props: IFormSendEmailProps) {
   const translationState = useAppTranslation();
   const [counterEmail, setCounterEmail] = React.useState(0);
   const [expand, setExpand] = React.useState(false);
+  const [value, setValue] = React.useState<number | null>(0);
   const [responseEmail, setResponseEmail] = React.useState<
     IEmailAlert | undefined
   >(undefined);
@@ -47,6 +50,7 @@ export function FormSendEmail(props: IFormSendEmailProps) {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm<IEmailForm>({ resolver: yupResolver(validationSchemaEmail) });
 
@@ -113,23 +117,27 @@ export function FormSendEmail(props: IFormSendEmailProps) {
               helperText={errors.message && errors.message?.message}
               disabled={isSendingEmail}
             />
-
+            <PageRating value={value} setValue={setValue} />
             <Button
               sx={ButtonMenuStyle}
               disableRipple
               color="inherit"
               fullWidth
               type="submit"
-              onClick={handleSubmit((data) =>
+              onClick={handleSubmit((data) => {
                 sendEmail(
                   data,
+                  value,
                   setResponseEmail,
                   setIsSendingEmail,
                   setExpand,
                   setCounterEmail,
                   counterEmail
-                )
-              )}
+                );
+                resetField("message");
+                resetField("email");
+                setValue(null);
+              })}
               disabled={isSendingEmail}
             >
               {isSendingEmail ? (

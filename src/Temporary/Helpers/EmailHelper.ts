@@ -5,9 +5,14 @@ export default class EmailHelper {
 
   public async sendEmailAsync(
     email: string,
-    message: string
+    message: string,
+    value: number | null
   ): Promise<any> {
-    const reqBody = { email, message };
+    let stars = value;
+    if(!value){
+       stars = 0;
+    }
+    const reqBody = { email, message, stars };
 
     try {
       const response = await this._adapter.postAsync("message", reqBody);

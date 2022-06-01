@@ -12,6 +12,7 @@ export interface IContactProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
   sendEmail: (
     data: IEmailForm,
+    value: number | null,
     setResponseEmail: (emailData: IEmailAlert | undefined) => void,
     setIsSendingEmail: (bool: boolean) => void,
     setExpand: (bool: boolean) => void,

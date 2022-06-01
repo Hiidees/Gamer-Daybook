@@ -40,7 +40,7 @@ export default class HttpServicesAdapter {
       const response = await this._specificAxios.request(requestConfig);
       const emailResponse: IEmailResponse = {
         status: "Success",
-        message: "Email inviata con successo",
+        message: "Messaggio inviato con successo",
         statusCode: response.status,
       };
       return emailResponse;
