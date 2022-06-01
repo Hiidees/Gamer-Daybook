@@ -18,6 +18,7 @@ export interface ISkipContinueProps {
   setInfoMessage: (message: string) => void;
   setIsContinue: (bool: boolean) => void;
   goTo: (path: string) => void;
+  setExpand: (bool: boolean) => void;
 }
 enum InfoMessage {
   skip = "Skip Snackbar",
@@ -32,6 +33,7 @@ export function SkipContinue(props: ISkipContinueProps) {
     setInfoMessage,
     setIsContinue,
     goTo,
+    setExpand,
   } = props;
   return (
     <Stack direction="row" spacing={5} sx={StackTypewriter}>
@@ -59,6 +61,7 @@ export function SkipContinue(props: ISkipContinueProps) {
         color="inherit"
         onClick={() => {
           setIsContinue(true);
+          setExpand(true);
         }}
       >
         Continue

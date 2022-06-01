@@ -9,6 +9,17 @@ import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import Stack from "@mui/material/Stack";
 import { SkipContinue } from "./SkipContinue";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import {
+  AccordionNewGame,
+  PaperNewGame,
+} from "../../Portables/Styles/AccordionStyle";
+import { AccordionDecision } from "./AccordionDecision";
 
 export interface INewGameProps {
   setSnackbar: (
@@ -39,6 +50,7 @@ export function NewGame(props: INewGameProps) {
   const [orderTypeWriter, setOrderTypeWriter] = React.useState(0);
   const [choice, setChoice] = React.useState(false);
   const [isContinue, setIsContinue] = React.useState(false);
+  const [expand, setExpand] = React.useState(false);
 
   window.addEventListener("resize", () =>
     resizeListener(window.innerHeight, setHeight)
@@ -53,6 +65,7 @@ export function NewGame(props: INewGameProps) {
           alignItems="center"
           justifyContent="center"
           sx={{
+            pb: 10,
             height: !isContinue ? height - 100 : "none",
           }}
         >
@@ -76,6 +89,7 @@ export function NewGame(props: INewGameProps) {
                     setMessage={setMessage}
                     goTo={goTo}
                     setOpenInfo={setOpenInfo}
+                    setExpand={setExpand}
                   />
                 )}
                 <SnackbarInfo
@@ -88,7 +102,7 @@ export function NewGame(props: INewGameProps) {
               </Stack>
             </React.Fragment>
           )}
-          {isContinue && (
+          {/* {isContinue && (
             <React.Fragment>
               <Stack>
                 <TypeWriter
@@ -121,8 +135,11 @@ export function NewGame(props: INewGameProps) {
                 )}
               </Stack>
             </React.Fragment>
-          )}
+          )} */}
         </Box>
+        {isContinue && (
+          <AccordionDecision setExpand={setExpand} expand={expand} />
+        )}
       </Container>
     </React.Fragment>
   );

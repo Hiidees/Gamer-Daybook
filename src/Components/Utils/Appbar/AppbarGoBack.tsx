@@ -7,10 +7,11 @@ import { AppbarAbout } from "../../Portables/Styles/AppbarStyle";
 
 export interface IAppbarGoBackProps {}
 
+
 export function AppbarGoBack(props: IAppbarGoBackProps) {
   const navigate = useNavigate();
   return (
-    <AppBar position="fixed" color="primary" sx={AppbarAbout}>
+    <AppBar position="sticky" color="primary" sx={AppbarAbout}>
       <Toolbar>
         <IconButton size="large" disableRipple onClick={() => navigate(-1)}>
           <ArrowBackIcon fontSize="inherit" />

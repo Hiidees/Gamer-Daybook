@@ -1,5 +1,5 @@
 export const AppbarAbout = {
-  position: "relative",
+  //position: "relative",
   zIndex: 1400,
   background: "transparent",
   boxShadow: "none",
