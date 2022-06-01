@@ -10,14 +10,18 @@ import {
   AccordionNewGame,
   PaperNewGame,
 } from "../../Portables/Styles/AccordionStyle";
+import { ButtonDrawerAppbarStyle } from "../../Portables/Styles/ButtonStyle";
 
 export interface IAccordionDecisionProps {
   setExpand: (bool: boolean) => void;
+  setSelectedTypeWriter: (value: number) => void;
+  selectedTypeWriter: number;
   expand: boolean;
 }
 
 export function AccordionDecision(props: IAccordionDecisionProps) {
-  const { setExpand, expand } = props;
+  const { setExpand, expand, setSelectedTypeWriter, selectedTypeWriter } =
+    props;
   return (
     <React.Fragment>
       <ClickAwayListener onClickAway={() => setExpand(false)}>
@@ -38,13 +42,43 @@ export function AccordionDecision(props: IAccordionDecisionProps) {
               </AccordionSummary>
               <AccordionDetails>
                 <Box>
-                  <Button fullWidth variant="text">
+                  <Button
+                    fullWidth
+                    disableRipple
+                    color="inherit"
+                    sx={ButtonDrawerAppbarStyle}
+                    disabled={selectedTypeWriter === 1 ? true : false}
+                    onClick={() => {
+                      setSelectedTypeWriter(1);
+                      setExpand(false);
+                    }}
+                  >
                     Prova 1
                   </Button>
-                  <Button fullWidth variant="text">
+                  <Button
+                    fullWidth
+                    disableRipple
+                    color="inherit"
+                    sx={ButtonDrawerAppbarStyle}
+                    disabled={selectedTypeWriter === 2 ? true : false}
+                    onClick={() => {
+                      setSelectedTypeWriter(2);
+                      setExpand(false);
+                    }}
+                  >
                     Prova 2
                   </Button>
-                  <Button fullWidth variant="text">
+                  <Button
+                    fullWidth
+                    disableRipple
+                    color="inherit"
+                    sx={ButtonDrawerAppbarStyle}
+                    disabled={selectedTypeWriter === 3 ? true : false}
+                    onClick={() => {
+                      setSelectedTypeWriter(3);
+                      setExpand(false);
+                    }}
+                  >
                     Prova 3
                   </Button>
                 </Box>

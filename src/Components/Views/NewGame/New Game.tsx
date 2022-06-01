@@ -9,16 +9,6 @@ import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import Stack from "@mui/material/Stack";
 import { SkipContinue } from "./SkipContinue";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import {
-  AccordionNewGame,
-  PaperNewGame,
-} from "../../Portables/Styles/AccordionStyle";
 import { AccordionDecision } from "./AccordionDecision";
 
 export interface INewGameProps {
@@ -37,6 +27,12 @@ export interface INewGameProps {
 enum typewriterMessages {
   typewriterMessage1 = "Benvenuto <br> Il mio nome è Marco <br> Piacere di conoscerti <br>Se sei qui significa che sei interessato al mio passato, presente e futuro <br> <br>",
   typewriterMessage2 = "Beh mettiti comodo, perchè sto per raccontarti una storia <br> La mia storia. <br>",
+  LoremIpsum1A = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat posuere, faucibus enim eget, pellentesque lacus. Morbi placerat, justo nec finibus iaculis, urna magna volutpat velit, non commodo est dui non ex. Vestibulum mollis ligula quis porttitor sagittis.",
+  LoremIpsum1B = "In pellentesque est in tortor tristique, vel sollicitudin tortor ornare. Etiam quis justo sollicitudin, volutpat dolor ut, tempus sem. Nam accumsan, urna sit amet condimentum facilisis, enim augue ultrices erat, in dictum ligula lorem eget velit.",
+  LoremIpsum2A = "Sed vitae vestibulum augue, vitae blandit ipsum. Donec sem quam, facilisis posuere cursus sed, accumsan vel mi. Aenean accumsan, est at viverra maximus, dolor ipsum rutrum orci, quis tincidunt est libero in neque. Etiam vitae lobortis justo. Phasellus odio nibh, auctor ac tellus at, placerat mattis enim.",
+  LoremIpsum2B = "Vivamus fringilla suscipit enim vitae feugiat. Duis iaculis non erat in accumsan. Suspendisse ac ornare felis. Sed ut urna vitae tellus hendrerit mattis et eget felis. Nulla ligula odio, consequat eu quam quis, semper volutpat turpis. Maecenas viverra elementum erat, quis fringilla leo porta imperdiet.",
+  LoremIpsum3A = "Maecenas lacinia facilisis enim at porttitor. Suspendisse potenti. Aenean semper velit eu ipsum tempus, nec pellentesque est sollicitudin. Integer id lorem non nibh imperdiet pharetra. Ut venenatis massa vel fermentum facilisis. Ut ut sapien lectus. Vestibulum pellentesque mauris non vulputate fermentum.",
+  LoremIpsum3B = "Suspendisse sit amet nulla a sem feugiat iaculis. Sed id neque ullamcorper, efficitur nulla ut, interdum dui. Phasellus cursus ullamcorper scelerisque. Nulla eget tortor eros. Donec tempor mi dapibus, tincidunt mi ac, eleifend neque. Nulla ornare semper risus condimentum consectetur.",
 }
 
 export function NewGame(props: INewGameProps) {
@@ -47,7 +43,7 @@ export function NewGame(props: INewGameProps) {
   const vertical = "bottom";
   const horizontal = "center";
   const translationState = useAppTranslation();
-  const [orderTypeWriter, setOrderTypeWriter] = React.useState(0);
+  const [selectedTypeWriter, setSelectedTypeWriter] = React.useState(0);
   const [choice, setChoice] = React.useState(false);
   const [isContinue, setIsContinue] = React.useState(false);
   const [expand, setExpand] = React.useState(false);
@@ -102,43 +98,47 @@ export function NewGame(props: INewGameProps) {
               </Stack>
             </React.Fragment>
           )}
-          {/* {isContinue && (
+          {isContinue && (
             <React.Fragment>
               <Stack>
-                <TypeWriter
-                  setOrderTypeWriter={setOrderTypeWriter}
-                  orderTypeWriter={orderTypeWriter}
-                  cursor=""
-                  initialPause={1500}
-                  typewriterMessage1={typewriterMessages.typewriterMessage1}
-                  typewriterMessage2={typewriterMessages.typewriterMessage2}
-                />
-                {orderTypeWriter >= 1 && (
+                {selectedTypeWriter === 1 && (
                   <TypeWriter
-                    setOrderTypeWriter={setOrderTypeWriter}
-                    orderTypeWriter={orderTypeWriter}
                     cursor=""
-                    initialPause={1500}
-                    typewriterMessage1={typewriterMessages.typewriterMessage1}
-                    typewriterMessage2={typewriterMessages.typewriterMessage2}
+                    setExpand={setExpand}
+                    initialPause={1000}
+                    typewriterMessage1={typewriterMessages.LoremIpsum1A}
+                    typewriterMessage2={typewriterMessages.LoremIpsum1B}
                   />
                 )}
-                {orderTypeWriter >= 2 && (
+                {selectedTypeWriter === 2 && (
                   <TypeWriter
-                    setOrderTypeWriter={setOrderTypeWriter}
-                    orderTypeWriter={orderTypeWriter}
                     cursor=""
-                    initialPause={1500}
-                    typewriterMessage1={typewriterMessages.typewriterMessage1}
-                    typewriterMessage2={typewriterMessages.typewriterMessage2}
+                    setExpand={setExpand}
+                    initialPause={1000}
+                    typewriterMessage1={typewriterMessages.LoremIpsum2A}
+                    typewriterMessage2={typewriterMessages.LoremIpsum2B}
+                  />
+                )}
+                {selectedTypeWriter === 3 && (
+                  <TypeWriter
+                    cursor=""
+                    setExpand={setExpand}
+                    initialPause={1000}
+                    typewriterMessage1={typewriterMessages.LoremIpsum3A}
+                    typewriterMessage2={typewriterMessages.LoremIpsum3B}
                   />
                 )}
               </Stack>
             </React.Fragment>
-          )} */}
+          )}
         </Box>
         {isContinue && (
-          <AccordionDecision setExpand={setExpand} expand={expand} />
+          <AccordionDecision
+            setExpand={setExpand}
+            setSelectedTypeWriter={setSelectedTypeWriter}
+            selectedTypeWriter={selectedTypeWriter}
+            expand={expand}
+          />
         )}
       </Container>
     </React.Fragment>

@@ -6,10 +6,9 @@ export interface ITypeWriterProps {
   setChoice?: (bool: boolean) => void;
   typewriterMessage1: string;
   typewriterMessage2: string;
-  setOrderTypeWriter?: (order: number) => void;
-  orderTypeWriter?: number;
   cursor: string;
   initialPause: number;
+  setExpand?: (bool: boolean) => void;
 }
 
 export function TypeWriter(props: ITypeWriterProps) {
@@ -17,10 +16,9 @@ export function TypeWriter(props: ITypeWriterProps) {
     typewriterMessage1,
     typewriterMessage2,
     setChoice,
-    setOrderTypeWriter,
-    orderTypeWriter,
     cursor,
     initialPause,
+    setExpand,
   } = props;
 
   return (
@@ -47,11 +45,8 @@ export function TypeWriter(props: ITypeWriterProps) {
               if (setChoice !== undefined) {
                 setChoice(true);
               }
-              if (
-                setOrderTypeWriter !== undefined &&
-                orderTypeWriter !== undefined
-              ) {
-                setOrderTypeWriter(orderTypeWriter + 1);
+              if (setExpand !== undefined) {
+                setExpand(true);
               }
             })
             .start();
