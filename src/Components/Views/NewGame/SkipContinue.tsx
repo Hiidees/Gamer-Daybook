@@ -5,66 +5,60 @@ import {
   ButtonContinueStyle,
 } from "../../Portables/Styles/ButtonStyle";
 import { StackTypewriter } from "../../Portables/Styles/StackStyle";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
+
 export interface ISkipContinueProps {
-  setSnackbar: (
-    bool: boolean,
-    openSnackbarInfo: (bool: boolean) => void
-  ) => void;
-  setMessage: (
-    message: string,
-    setInfoMessage: (message: string) => void
-  ) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   setOpenInfo: (bool: boolean) => void;
   setInfoMessage: (message: string) => void;
   setIsContinue: (bool: boolean) => void;
   goTo: (path: string) => void;
   setExpand: (bool: boolean) => void;
 }
-enum InfoMessage {
-  skip = "Skip Snackbar",
-  continue = "Continue Snackbar",
-}
 
 export function SkipContinue(props: ISkipContinueProps) {
   const {
-    setSnackbar,
-    setMessage,
     setOpenInfo,
     setInfoMessage,
     setIsContinue,
     goTo,
     setExpand,
+    setState,
   } = props;
+  const translationState = useAppTranslation();
   return (
     <Stack direction="row" spacing={5} sx={StackTypewriter}>
       <Button
         sx={ButtonSkipStyle}
         disableRipple
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.skip, setInfoMessage);
+          setState(true, setOpenInfo);
+          setState(
+            translationState.translation["Go back to menu"],
+            setInfoMessage
+          );
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
         color="inherit"
         onClick={() => goTo("")}
       >
-        Skip
+        {translationState.translation["Go back"]}
       </Button>
       <Button
         sx={ButtonContinueStyle}
         disableRipple
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(InfoMessage.continue, setInfoMessage);
+          setState(true, setOpenInfo);
+          setState(translationState.translation["I'm ready!"], setInfoMessage);
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
         color="inherit"
         onClick={() => {
-          setIsContinue(true);
-          setExpand(true);
+          setState(true, setIsContinue);
+          setState(true, setExpand);
         }}
       >
-        Continue
+        {translationState.translation["Continue"]}
       </Button>
     </Stack>
   );

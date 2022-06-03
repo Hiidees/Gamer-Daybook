@@ -18,3 +18,8 @@ export const ListButtonLanguage = {
       textAlign: "center",
       animation: `${blink} 1s linear infinite alternate`,
   } as const;
+
+
+export const ListChooseLanguage = {
+  justifyContent: "center"
+} as const;

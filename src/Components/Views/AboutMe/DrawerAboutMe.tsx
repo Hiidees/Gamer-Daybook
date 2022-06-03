@@ -1,5 +1,8 @@
 import Drawer from "@mui/material/Drawer";
-import { ButtonDrawerAppbarStyle } from "../../Portables/Styles/ButtonStyle";
+import {
+  ButtonDisabledDarkStyle,
+  ButtonDisabledLightStyle,
+} from "../../Portables/Styles/ButtonStyle";
 import { PaperDrawer } from "../../Portables/Styles/PaperStyle";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -7,27 +10,22 @@ import Slide from "@mui/material/Slide";
 import React from "react";
 import { StackDrawer } from "../../Portables/Styles/StackStyle";
 import { DisableKey } from "../../../Domains/Enums/DisableKeyEnums";
+import useAppTheme from "../../../Hooks/useAppTheme";
+import { AppThemeKind } from "../../../Domains/Enums/AppThemeEnums";
 
 export interface IDrawerAboutMeProps {
-  setDisableKey: (
-    value: DisableKey,
-    setDisable: (value: DisableKey) => void
-  ) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   setDisable: (value: DisableKey) => void;
   disable: DisableKey;
-  setVisibilityKey: (
-    value: DisableKey,
-    setVisibility: (value: DisableKey) => void
-  ) => void;
   setVisibility: (value: DisableKey) => void;
 }
 
 export function DrawerAboutMe(props: IDrawerAboutMeProps) {
+  const themeUIStore = useAppTheme();
   const {
+    setState,
     setDisable,
-    setDisableKey,
     disable,
-    setVisibilityKey,
     setVisibility,
   } = props;
   const [disableHover, setDisableHover] = React.useState(false);
@@ -47,21 +45,23 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
             disabled={disable === DisableKey.disableOne ? true : false}
             disableRipple
             onMouseOver={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.disableOne, setVisibility);
+              !disableHover && setState(DisableKey.disableOne, setVisibility);
             }}
             onMouseLeave={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.default, setVisibility);
+              !disableHover && setState(DisableKey.default, setVisibility);
             }}
             onClick={() => {
-              setDisableKey(DisableKey.disableOne, setDisable);
-              setVisibilityKey(DisableKey.disableOne, setVisibility);
-              setDisableHover(true);
+              setState(DisableKey.disableOne, setDisable);
+              setState(DisableKey.disableOne, setVisibility);
+              setState(true, setDisableHover);
             }}
-            sx={ButtonDrawerAppbarStyle}
+            sx={
+              themeUIStore.themeKind === AppThemeKind.Light
+                ? ButtonDisabledLightStyle
+                : ButtonDisabledDarkStyle
+            }
           >
-            1
+            Prova 1
           </Button>
           <Button
             variant="text"
@@ -69,21 +69,23 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
             disabled={disable === DisableKey.disableTwo ? true : false}
             disableRipple
             onMouseOver={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.disableTwo, setVisibility);
+              !disableHover && setState(DisableKey.disableTwo, setVisibility);
             }}
             onMouseLeave={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.default, setVisibility);
+              !disableHover && setState(DisableKey.default, setVisibility);
             }}
             onClick={() => {
-              setDisableKey(DisableKey.disableTwo, setDisable);
-              setVisibilityKey(DisableKey.disableTwo, setVisibility);
-              setDisableHover(true);
+              setState(DisableKey.disableTwo, setDisable);
+              setState(DisableKey.disableTwo, setVisibility);
+              setState(true, setDisableHover);
             }}
-            sx={ButtonDrawerAppbarStyle}
+            sx={
+              themeUIStore.themeKind === AppThemeKind.Light
+                ? ButtonDisabledLightStyle
+                : ButtonDisabledDarkStyle
+            }
           >
-            2
+            Prova 2
           </Button>
           <Button
             variant="text"
@@ -91,21 +93,23 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
             disabled={disable === DisableKey.disableThree ? true : false}
             disableRipple
             onMouseOver={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.disableThree, setVisibility);
+              !disableHover && setState(DisableKey.disableThree, setVisibility);
             }}
             onMouseLeave={() => {
-              !disableHover &&
-                setVisibilityKey(DisableKey.default, setVisibility);
+              !disableHover && setState(DisableKey.default, setVisibility);
             }}
             onClick={() => {
-              setDisableKey(DisableKey.disableThree, setDisable);
-              setVisibilityKey(DisableKey.disableThree, setVisibility);
-              setDisableHover(true);
+              setState(DisableKey.disableThree, setDisable);
+              setState(DisableKey.disableThree, setVisibility);
+              setState(true, setDisableHover);
             }}
-            sx={ButtonDrawerAppbarStyle}
+            sx={
+              themeUIStore.themeKind === AppThemeKind.Light
+                ? ButtonDisabledLightStyle
+                : ButtonDisabledDarkStyle
+            }
           >
-            3
+            Prova 3
           </Button>
         </Stack>
       </Slide>

@@ -30,3 +30,7 @@ export const TypographyAboutMe = {
 export const DialogTitleNewGame = {
   textAlign: "center",
 } as const;
+
+export const TypographyChooseLanguage = {
+  fontSize: "35px"
+} as const;

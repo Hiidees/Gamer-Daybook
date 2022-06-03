@@ -9,21 +9,15 @@ import Box from "@mui/material/Box";
 import { TypographysDesktop } from "./TypographysDesktop";
 import { TypographysMobile } from "./TypographysMobile";
 import { AppbarAboutMe } from "./AppbarAboutMe";
+import { BoxHeight } from "../../Portables/Styles/BoxStyle";
 
 export interface IAboutMeProps {
-  setDisableKey: (
-    value: DisableKey,
-    setDisable: (value: DisableKey) => void
-  ) => void;
-  setVisibilityKey: (
-    value: DisableKey,
-    setVisibility: (value: DisableKey) => void
-  ) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
 }
 
 export function AboutMe(props: IAboutMeProps) {
-  const { setDisableKey, resizeListener, setVisibilityKey } = props;
+  const { setState, resizeListener } = props;
   const [disable, setDisable] = React.useState<DisableKey>(DisableKey.default);
   const [visibility, setVisibility] = React.useState<DisableKey>(
     DisableKey.default
@@ -44,25 +38,24 @@ export function AboutMe(props: IAboutMeProps) {
         {matches && (
           <React.Fragment>
             <DrawerAboutMe
-              setDisableKey={setDisableKey}
+              setState={setState}
               disable={disable}
               setDisable={setDisable}
-              setVisibilityKey={setVisibilityKey}
               setVisibility={setVisibility}
             />
 
-            <Box
+            <BoxHeight
               display="flex"
               alignItems="center"
               justifyContent="center"
-              sx={{ height: height - 100 }}
+              myheight={height - 100}
             >
               <TypographysDesktop
                 disable={disable}
                 visibility={visibility}
                 height={height}
               />
-            </Box>
+            </BoxHeight>
           </React.Fragment>
         )}
 

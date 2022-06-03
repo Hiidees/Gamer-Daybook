@@ -4,6 +4,9 @@ import { Home } from "../Views/Home/Home";
 export function HomeController() {
   const navigate = useNavigate();
 
+  function setState(arg: any, changeState: (arg: any) => void) {
+    changeState(arg);
+  }
   function setSnackbar(
     bool: boolean,
     openSnackbarInfo: (bool: boolean) => void
@@ -32,6 +35,7 @@ export function HomeController() {
 
   return (
     <Home
+      setState={setState}
       setSnackbar={setSnackbar}
       resizeListener={resizeListener}
       setMessage={setMessage}

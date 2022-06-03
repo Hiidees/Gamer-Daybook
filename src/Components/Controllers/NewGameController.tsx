@@ -1,42 +1,23 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { NewGame } from "../Views/NewGame/New Game";
+import { NewGame } from "../Views/NewGame/NewGame";
 
 export interface INewGameControllerProps {}
 
 export function NewGameController(props: INewGameControllerProps) {
   const navigate = useNavigate();
 
-  function setSnackbar(
-    bool: boolean,
-    openSnackbarInfo: (bool: boolean) => void
-  ) {
-    openSnackbarInfo(bool);
-  }
-
-  function setMessage(
-    message: string,
-    setInfoMessage: (message: string) => void
-  ) {
-    setInfoMessage(message);
+  function setState(arg: any, changeState: (arg: any) => void) {
+    changeState(arg);
   }
 
   function goTo(path: string) {
     navigate("/" + path);
   }
 
-  function resizeListener(height: number, setHeight: (height: number) => void) {
-    setHeight(height);
-  }
-
   return (
     <React.Fragment>
-      <NewGame
-        setSnackbar={setSnackbar}
-        resizeListener={resizeListener}
-        setMessage={setMessage}
-        goTo={goTo}
-      />
+      <NewGame setState={setState} goTo={goTo} />
     </React.Fragment>
   );
 }

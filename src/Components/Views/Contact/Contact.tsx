@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
@@ -7,9 +6,10 @@ import { FormSendEmail } from "./FormSendEmail";
 import React from "react";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
+import { BoxHeight } from "../../Portables/Styles/BoxStyle";
 
 export interface IContactProps {
-  resizeListener: (height: number, setHeight: (height: number) => void) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   sendEmail: (
     data: IEmailForm,
     value: number | null,
@@ -31,11 +31,11 @@ export interface IEmailAlert {
   message: string;
 }
 export function Contact(props: IContactProps) {
-  const { resizeListener, sendEmail } = props;
+  const { setState, sendEmail } = props;
   const translationState = useAppTranslation();
   const [height, setHeight] = React.useState(window.innerHeight);
   window.addEventListener("resize", () =>
-    resizeListener(window.innerHeight, setHeight)
+    setState(window.innerHeight, setHeight)
   );
 
   return (
@@ -43,15 +43,15 @@ export function Contact(props: IContactProps) {
       <MyHelmet title={translationState.translation["Contact"]} />
       <AppbarGoBack />
       <Container maxWidth="md">
-        <Box
+        <BoxHeight
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{ height: height - 100 }}
+          myheight={height - 100}
         >
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={12} sm={6} md={6}>
-              <FormSendEmail sendEmail={sendEmail} />
+              <FormSendEmail setState={setState} sendEmail={sendEmail} />
             </Grid>
             <Grid
               item
@@ -63,7 +63,7 @@ export function Contact(props: IContactProps) {
               <SocialLinkCard />
             </Grid>
           </Grid>
-        </Box>
+        </BoxHeight>
       </Container>
     </React.Fragment>
   );

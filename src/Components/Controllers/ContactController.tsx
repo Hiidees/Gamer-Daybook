@@ -1,4 +1,3 @@
-import * as React from "react";
 import useAppTranslation from "../../Hooks/useAppTranslation";
 import useCookies from "../../Hooks/useCookies";
 import EmailHelper from "../../Temporary/Helpers/EmailHelper";
@@ -8,8 +7,9 @@ export interface IContactControllerProps {}
 
 export function ContactController(props: IContactControllerProps) {
   const translationState = useAppTranslation();
-  function resizeListener(height: number, setHeight: (height: number) => void) {
-    setHeight(height);
+
+  function setState(arg: any, changeState: (arg: any) => void) {
+    changeState(arg);
   }
 
   async function sendEmail(
@@ -22,7 +22,7 @@ export function ContactController(props: IContactControllerProps) {
     counterEmail: number
   ) {
     const _EmailHelper = new EmailHelper();
-    setIsSendingEmail(true);
+    setState(true, setIsSendingEmail);
 
     if (counterEmail < 2) {
       const emailResponse = await _EmailHelper.sendEmailAsync(
@@ -43,23 +43,26 @@ export function ContactController(props: IContactControllerProps) {
         severity: emailResponse.status === "Success" ? "success" : "error",
         message: emailMessage + " " + emailAlertCode,
       };
-      setResponseEmail(emailAlert);
+      setState(emailAlert, setResponseEmail);
 
       if (emailResponse.status === "Success") {
-        setCounterEmail(counterEmail + 1);
+        setState(counterEmail + 1, setCounterEmail);
         useCookies.setCookieEmail("email", counterEmail + 1);
       }
     } else {
-      setResponseEmail({
-        severity: "error",
-        message:
-          translationState.translation[
-            "You can not send more of two mail in one day"
-          ],
-      });
+      setState(
+        {
+          severity: "error",
+          message:
+            translationState.translation[
+              "You can not send more of two mail in one day"
+            ],
+        },
+        setResponseEmail
+      );
     }
-    setIsSendingEmail(false);
-    setExpand(false);
+    setState(false, setIsSendingEmail);
+    setState(false, setExpand);
   }
-  return <Contact resizeListener={resizeListener} sendEmail={sendEmail} />;
+  return <Contact setState={setState} sendEmail={sendEmail} />;
 }

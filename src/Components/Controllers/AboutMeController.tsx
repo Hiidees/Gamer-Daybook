@@ -3,18 +3,8 @@ import { DisableKey } from "../../Domains/Enums/DisableKeyEnums";
 
 export interface IAboutMeControllerProps {}
 
-function setDisableKey(
-  value: DisableKey,
-  setDisable: (value: DisableKey) => void
-) {
-  setDisable(value);
-}
-
-function setVisibilityKey(
-  value: DisableKey,
-  setVisibility: (value: DisableKey) => void
-) {
-  setVisibility(value);
+function setState(arg: any, changeState: (arg: any) => void) {
+  changeState(arg);
 }
 
 function resizeListener(height: number, setHeight: (height: number) => void) {
@@ -22,11 +12,5 @@ function resizeListener(height: number, setHeight: (height: number) => void) {
 }
 
 export function AboutMeController(props: IAboutMeControllerProps) {
-  return (
-    <AboutMe
-      setDisableKey={setDisableKey}
-      resizeListener={resizeListener}
-      setVisibilityKey={setVisibilityKey}
-    />
-  );
+  return <AboutMe setState={setState} resizeListener={resizeListener} />;
 }

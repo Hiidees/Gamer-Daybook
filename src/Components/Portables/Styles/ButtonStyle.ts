@@ -11,9 +11,14 @@ const blink2 = keyframes`
   from { opacity: 1; }
   to { opacity: 0; }
 `;
-const color = keyframes`
+const colorDark = keyframes`
   from {background: transparent; }
   to {background: white; color: black; opacity:0.5 }
+`;
+
+const colorLight = keyframes`
+  from {background: transparent; }
+  to {background: black; color: white; opacity:0.5 }
 `;
 
 const colorChange = keyframes` 
@@ -79,13 +84,23 @@ export const ButtonLoginStyle = {
   marginBottom: 1,
 } as const;
 
-export const ButtonDrawerAppbarStyle = {
+export const ButtonDisabledDarkStyle = {
   "&:hover": {
     background: "none",
     color: "#969696",
   },
   "&:disabled": {
-    animation: `${color} 0.8s linear forwards `,
+    animation: `${colorDark} 0.8s linear forwards `,
+  },
+} as const;
+
+export const ButtonDisabledLightStyle = {
+  "&:hover": {
+    background: "none",
+    color: "#969696",
+  },
+  "&:disabled": {
+    animation: `${colorLight} 0.8s linear forwards `,
   },
 } as const;
 

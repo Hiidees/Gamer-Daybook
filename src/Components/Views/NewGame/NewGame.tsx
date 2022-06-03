@@ -1,6 +1,5 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 import { SnackbarInfo } from "../../Utils/Snackbar/SnackbarInfo";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
@@ -10,17 +9,10 @@ import useAppTranslation from "../../../Hooks/useAppTranslation";
 import Stack from "@mui/material/Stack";
 import { SkipContinue } from "./SkipContinue";
 import { AccordionDecision } from "./AccordionDecision";
+import { BoxHeightNewGame } from "../../Portables/Styles/BoxStyle";
 
 export interface INewGameProps {
-  setSnackbar: (
-    bool: boolean,
-    openSnackbarInfo: (bool: boolean) => void
-  ) => void;
-  setMessage: (
-    message: string,
-    setInfoMessage: (message: string) => void
-  ) => void;
-  resizeListener: (height: number, setHeight: (height: number) => void) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   goTo: (path: string) => void;
 }
 
@@ -36,34 +28,33 @@ enum typewriterMessages {
 }
 
 export function NewGame(props: INewGameProps) {
-  const { setSnackbar, resizeListener, setMessage, goTo } = props;
+  const { setState, goTo } = props;
+  const translationState = useAppTranslation();
+  const vertical = "bottom";
+  const horizontal = "center";
+
   const [height, setHeight] = React.useState(window.innerHeight);
   const [openInfo, setOpenInfo] = React.useState(false);
   const [infoMessage, setInfoMessage] = React.useState("");
-  const vertical = "bottom";
-  const horizontal = "center";
-  const translationState = useAppTranslation();
   const [selectedTypeWriter, setSelectedTypeWriter] = React.useState(0);
   const [choice, setChoice] = React.useState(false);
   const [isContinue, setIsContinue] = React.useState(false);
   const [expand, setExpand] = React.useState(false);
 
   window.addEventListener("resize", () =>
-    resizeListener(window.innerHeight, setHeight)
+    setState(window.innerHeight, setHeight)
   );
+
   return (
     <React.Fragment>
       <MyHelmet title={translationState.translation["NewGame"]} />
       <AppbarGoBack />
       <Container maxWidth="sm">
-        <Box
+        <BoxHeightNewGame
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{
-            pb: 10,
-            height: !isContinue ? height - 100 : "none",
-          }}
+          myheight={!isContinue ? height - 100 : "none"}
         >
           {!useCookies.getCookie("newgame") &&
             useCookies.setCookie("newgame", "true")}
@@ -71,6 +62,7 @@ export function NewGame(props: INewGameProps) {
             <React.Fragment>
               <Stack>
                 <TypeWriter
+                  setState={setState}
                   setChoice={setChoice}
                   typewriterMessage1={typewriterMessages.typewriterMessage1}
                   typewriterMessage2={typewriterMessages.typewriterMessage2}
@@ -79,10 +71,9 @@ export function NewGame(props: INewGameProps) {
                 />
                 {choice && (
                   <SkipContinue
-                    setSnackbar={setSnackbar}
+                    setState={setState}
                     setInfoMessage={setInfoMessage}
                     setIsContinue={setIsContinue}
-                    setMessage={setMessage}
                     goTo={goTo}
                     setOpenInfo={setOpenInfo}
                     setExpand={setExpand}
@@ -104,6 +95,7 @@ export function NewGame(props: INewGameProps) {
                 {selectedTypeWriter === 1 && (
                   <TypeWriter
                     cursor=""
+                    setState={setState}
                     setExpand={setExpand}
                     initialPause={1000}
                     typewriterMessage1={typewriterMessages.LoremIpsum1A}
@@ -113,6 +105,7 @@ export function NewGame(props: INewGameProps) {
                 {selectedTypeWriter === 2 && (
                   <TypeWriter
                     cursor=""
+                    setState={setState}
                     setExpand={setExpand}
                     initialPause={1000}
                     typewriterMessage1={typewriterMessages.LoremIpsum2A}
@@ -122,6 +115,7 @@ export function NewGame(props: INewGameProps) {
                 {selectedTypeWriter === 3 && (
                   <TypeWriter
                     cursor=""
+                    setState={setState}
                     setExpand={setExpand}
                     initialPause={1000}
                     typewriterMessage1={typewriterMessages.LoremIpsum3A}
@@ -131,9 +125,10 @@ export function NewGame(props: INewGameProps) {
               </Stack>
             </React.Fragment>
           )}
-        </Box>
+        </BoxHeightNewGame>
         {isContinue && (
           <AccordionDecision
+            setState={setState}
             setExpand={setExpand}
             setSelectedTypeWriter={setSelectedTypeWriter}
             selectedTypeWriter={selectedTypeWriter}

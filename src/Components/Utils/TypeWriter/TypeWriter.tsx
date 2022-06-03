@@ -8,6 +8,7 @@ export interface ITypeWriterProps {
   typewriterMessage2: string;
   cursor: string;
   initialPause: number;
+  setState?: (arg: any, changeState: (arg: any) => void) => void;
   setExpand?: (bool: boolean) => void;
 }
 
@@ -16,6 +17,7 @@ export function TypeWriter(props: ITypeWriterProps) {
     typewriterMessage1,
     typewriterMessage2,
     setChoice,
+    setState,
     cursor,
     initialPause,
     setExpand,
@@ -42,11 +44,11 @@ export function TypeWriter(props: ITypeWriterProps) {
             .pauseFor(1000)
             .typeString(typewriterMessage2)
             .callFunction(() => {
-              if (setChoice !== undefined) {
-                setChoice(true);
+              if (setChoice !== undefined && setState !== undefined) {
+                setState(true, setChoice);
               }
-              if (setExpand !== undefined) {
-                setExpand(true);
+              if (setExpand !== undefined && setState !== undefined) {
+                setState(true, setExpand);
               }
             })
             .start();

@@ -19,3 +19,9 @@ export const PaperNewGame = {
     right: 0,
   animation: `${blink} 1s linear`,
 } as const;
+
+export const AccordionSummaryNewGame = {
+  "& .MuiAccordionSummary-content": {
+  justifyContent: "center",
+},
+} as const;

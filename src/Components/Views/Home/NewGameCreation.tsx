@@ -7,15 +7,16 @@ import { ButtonNewGameCreationStyle } from "../../Portables/Styles/ButtonStyle";
 import { DialogTitleNewGame } from "../../Portables/Styles/TypographyStyle";
 
 export interface INewGameCreationProps {
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpenDialog: (open: boolean) => void;
   goTo: (path: string) => void;
 }
 
 export function NewGameCreation(props: INewGameCreationProps) {
-  const { open, setOpen, goTo } = props;
+  const { open, setOpenDialog, goTo, setState } = props;
   const handleClose = () => {
-    setOpen(false);
+    setState(false, setOpenDialog);
   };
   return (
     <Dialog
@@ -32,7 +33,10 @@ export function NewGameCreation(props: INewGameCreationProps) {
         <Button sx={ButtonNewGameCreationStyle} onClick={() => goTo("newgame")}>
           Yes
         </Button>
-        <Button sx={ButtonNewGameCreationStyle} onClick={() => setOpen(false)}>
+        <Button
+          sx={ButtonNewGameCreationStyle}
+          onClick={() => setState(false, setOpenDialog)}
+        >
           No
         </Button>
       </Stack>

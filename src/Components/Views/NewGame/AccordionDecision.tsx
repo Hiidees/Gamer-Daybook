@@ -9,10 +9,18 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import {
   AccordionNewGame,
   PaperNewGame,
+  AccordionSummaryNewGame,
 } from "../../Portables/Styles/AccordionStyle";
-import { ButtonDrawerAppbarStyle } from "../../Portables/Styles/ButtonStyle";
+import {
+  ButtonDisabledDarkStyle,
+  ButtonDisabledLightStyle,
+} from "../../Portables/Styles/ButtonStyle";
+import useAppTheme from "../../../Hooks/useAppTheme";
+import { AppThemeKind } from "../../../Domains/Enums/AppThemeEnums";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 export interface IAccordionDecisionProps {
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   setExpand: (bool: boolean) => void;
   setSelectedTypeWriter: (value: number) => void;
   selectedTypeWriter: number;
@@ -20,25 +28,28 @@ export interface IAccordionDecisionProps {
 }
 
 export function AccordionDecision(props: IAccordionDecisionProps) {
-  const { setExpand, expand, setSelectedTypeWriter, selectedTypeWriter } =
-    props;
+  const {
+    setState,
+    setExpand,
+    expand,
+    setSelectedTypeWriter,
+    selectedTypeWriter,
+  } = props;
+  const themeUIStore = useAppTheme();
+  const translationState = useAppTranslation();
   return (
     <React.Fragment>
-      <ClickAwayListener onClickAway={() => setExpand(false)}>
+      <ClickAwayListener onClickAway={() => setState(false, setExpand)}>
         <Box display="flex" alignItems="center" justifyContent="center">
           <Paper sx={PaperNewGame} elevation={3}>
             <Accordion sx={AccordionNewGame} expanded={expand}>
               <AccordionSummary
                 aria-controls="panel1a-content"
                 id="panel1a-header"
-                onClick={() => setExpand(!expand)}
-                sx={{
-                  "& .MuiAccordionSummary-content": {
-                    justifyContent: "center",
-                  },
-                }}
+                onClick={() => setState(!expand, setExpand)}
+                sx={AccordionSummaryNewGame}
               >
-                Cosa vuoi sapere?
+                {translationState.translation["What do you wanna know?"]}
               </AccordionSummary>
               <AccordionDetails>
                 <Box>
@@ -46,40 +57,52 @@ export function AccordionDecision(props: IAccordionDecisionProps) {
                     fullWidth
                     disableRipple
                     color="inherit"
-                    sx={ButtonDrawerAppbarStyle}
+                    sx={
+                      themeUIStore.themeKind === AppThemeKind.Light
+                        ? ButtonDisabledLightStyle
+                        : ButtonDisabledDarkStyle
+                    }
                     disabled={selectedTypeWriter === 1 ? true : false}
                     onClick={() => {
-                      setSelectedTypeWriter(1);
-                      setExpand(false);
+                      setState(1, setSelectedTypeWriter);
+                      setState(false, setExpand);
                     }}
                   >
-                    Prova 1
+                    {translationState.translation["Question1"]}
                   </Button>
                   <Button
                     fullWidth
                     disableRipple
                     color="inherit"
-                    sx={ButtonDrawerAppbarStyle}
+                    sx={
+                      themeUIStore.themeKind === AppThemeKind.Light
+                        ? ButtonDisabledLightStyle
+                        : ButtonDisabledDarkStyle
+                    }
                     disabled={selectedTypeWriter === 2 ? true : false}
                     onClick={() => {
-                      setSelectedTypeWriter(2);
-                      setExpand(false);
+                      setState(2, setSelectedTypeWriter);
+                      setState(false, setExpand);
                     }}
                   >
-                    Prova 2
+                    {translationState.translation["Question2"]}
                   </Button>
                   <Button
                     fullWidth
                     disableRipple
                     color="inherit"
-                    sx={ButtonDrawerAppbarStyle}
+                    sx={
+                      themeUIStore.themeKind === AppThemeKind.Light
+                        ? ButtonDisabledLightStyle
+                        : ButtonDisabledDarkStyle
+                    }
                     disabled={selectedTypeWriter === 3 ? true : false}
                     onClick={() => {
-                      setSelectedTypeWriter(3);
-                      setExpand(false);
+                      setState(3, setSelectedTypeWriter);
+                      setState(false, setExpand);
                     }}
                   >
-                    Prova 3
+                    {translationState.translation["Question2"]}
                   </Button>
                 </Box>
               </AccordionDetails>

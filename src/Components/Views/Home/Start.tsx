@@ -7,12 +7,12 @@ import useCookies from "../../../Hooks/useCookies";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 export interface IStartProps {
-  setMenu: (bool: boolean, openMenu: (bool: boolean) => void) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   setSubMenu: (bool: boolean) => void;
 }
 
 export default function Start(props: IStartProps) {
-  const { setMenu, setSubMenu } = props;
+  const { setState, setSubMenu } = props;
   const translationState = useAppTranslation();
 
   return (
@@ -31,7 +31,7 @@ export default function Start(props: IStartProps) {
         color="inherit"
         onClick={() => {
           useCookies.setCookie("start", "true");
-          setMenu(true, setSubMenu);
+          setState(true, setSubMenu);
         }}
       >
         {translationState.translation["Start"]}

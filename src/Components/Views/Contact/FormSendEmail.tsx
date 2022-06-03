@@ -26,6 +26,7 @@ import Box from "@mui/material/Box";
 import PageRating from "./PageRating";
 
 export interface IFormSendEmailProps {
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   sendEmail: (
     data: IEmailForm,
     value: number | null,
@@ -38,7 +39,7 @@ export interface IFormSendEmailProps {
 }
 
 export function FormSendEmail(props: IFormSendEmailProps) {
-  const { sendEmail } = props;
+  const { sendEmail, setState } = props;
   const translationState = useAppTranslation();
   const [counterEmail, setCounterEmail] = React.useState(0);
   const [expand, setExpand] = React.useState(false);
@@ -85,7 +86,7 @@ export function FormSendEmail(props: IFormSendEmailProps) {
             color="inherit"
             fullWidth
             type="submit"
-            onClick={() => setExpand(!expand)}
+            onClick={() => setState(!expand, setExpand)}
           >
             {expand
               ? translationState.translation["Close"]

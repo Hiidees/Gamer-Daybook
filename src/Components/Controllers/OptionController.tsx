@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { AppThemeKind } from "../../Domains/Enums/AppThemeEnums";
 import useAppTheme from "../../Hooks/useAppTheme";

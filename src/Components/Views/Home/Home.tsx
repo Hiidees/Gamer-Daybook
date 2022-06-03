@@ -7,8 +7,10 @@ import Start from "./Start";
 import { HomeMenu } from "./HomeMenu";
 import useCookies from "../../../Hooks/useCookies";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
+import { BoxHeight } from "../../Portables/Styles/BoxStyle";
 
 interface IHome {
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   setSnackbar: (
     bool: boolean,
     openSnackbarInfo: (bool: boolean) => void
@@ -23,7 +25,8 @@ interface IHome {
 }
 
 export function Home(props: IHome) {
-  const { setSnackbar, resizeListener, setMessage, goTo, setMenu } = props;
+  const { setSnackbar, resizeListener, setMessage, goTo, setMenu, setState } =
+    props;
   const [height, setHeight] = useState(window.innerHeight);
   const [subMenu, setSubMenu] = useState(false);
   const [openInfo, setOpenInfo] = React.useState(false);
@@ -37,30 +40,28 @@ export function Home(props: IHome) {
     <React.Fragment>
       <MyHelmet title={"Home"} />
       <Container maxWidth="md">
-        <Box
+        <BoxHeight
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{ height: height }}
+          myheight={height}
         >
           <Stack spacing={2}>
             {!subMenu && !useCookies.getCookie("start") ? (
-              <Start setMenu={setMenu} setSubMenu={setSubMenu} />
+              <Start setState={setState} setSubMenu={setSubMenu} />
             ) : (
               <HomeMenu
-                setSnackbar={setSnackbar}
-                setMessage={setMessage}
+                setState={setState}
                 goTo={goTo}
                 setInfoMessage={setInfoMessage}
                 setOpenInfo={setOpenInfo}
-                setMenu={setMenu}
                 infoMessage={infoMessage}
                 setSubMenu={setSubMenu}
                 openInfo={openInfo}
               />
             )}
           </Stack>
-        </Box>
+        </BoxHeight>
       </Container>
     </React.Fragment>
   );

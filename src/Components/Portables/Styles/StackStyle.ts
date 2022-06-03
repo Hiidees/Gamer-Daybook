@@ -6,3 +6,7 @@ export const StackDrawer = {
 export const StackTypewriter = {
  justifyContent: "space-between"
 } as const;
+
+export const StackChooseLanguage = {
+  width: "100%"
+} as const;

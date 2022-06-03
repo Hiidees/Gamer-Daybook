@@ -1,6 +1,6 @@
-import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import * as React from "react";
+import { AlertSnackbar } from "../../Portables/Styles/AlertStyles";
 import { SnackbarInfoStyle } from "../../Portables/Styles/SnackbarStyle";
 
 export interface ISnackbarInfoProps {
@@ -21,18 +21,9 @@ export function SnackbarInfo(props: ISnackbarInfoProps) {
         sx={SnackbarInfoStyle}
         open={openInfo}
       >
-        <Alert
-          icon={false}
-          sx={{
-            background: "none",
-            width: "100%",
-            color: color,
-            textAlign: "center",
-            justifyContent: "center",
-          }}
-        >
+        <AlertSnackbar icon={false} mycolor={color}>
           {message}
-        </Alert>
+        </AlertSnackbar>
       </Snackbar>
     </React.Fragment>
   );

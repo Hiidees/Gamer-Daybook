@@ -1,11 +1,11 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Button404Style } from "../../Portables/Styles/ButtonStyle";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
+import { BoxHeight } from "../../Portables/Styles/BoxStyle";
 
 export interface IEasterEggProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -23,11 +23,11 @@ export function EasterEgg(props: IEasterEggProps) {
   return (
     <Container maxWidth="xs">
       <MyHelmet title={"404"} />
-      <Box
+      <BoxHeight
         display="flex"
         alignItems="center"
         justifyContent="center"
-        sx={{ height: height }}
+        myheight={height - 100}
       >
         <Stack spacing={2} sx={{ width: "100%" }}>
           <Typography
@@ -49,7 +49,7 @@ export function EasterEgg(props: IEasterEggProps) {
             Le margherite fuggono, quando nessuno le osserva
           </Button>
         </Stack>
-      </Box>
+      </BoxHeight>
     </Container>
   );
 }

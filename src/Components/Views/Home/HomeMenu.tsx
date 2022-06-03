@@ -11,18 +11,10 @@ import useAppTranslation from "../../../Hooks/useAppTranslation";
 import { TypeWriter } from "../../Utils/TypeWriter/TypeWriter";
 
 export interface IHomeMenuProps {
-  setSnackbar: (
-    bool: boolean,
-    openSnackbarInfo: (bool: boolean) => void
-  ) => void;
-  setMessage: (
-    message: string,
-    setInfoMessage: (message: string) => void
-  ) => void;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
   goTo: (path: string) => void;
   setInfoMessage: (message: string) => void;
   setOpenInfo: (bool: boolean) => void;
-  setMenu: (bool: boolean, openMenu: (bool: boolean) => void) => void;
   infoMessage: string;
   setSubMenu: (bool: boolean) => void;
   openInfo: boolean;
@@ -31,14 +23,12 @@ export interface IHomeMenuProps {
 export function HomeMenu(props: IHomeMenuProps) {
   const {
     setInfoMessage,
-    setSnackbar,
-    setMessage,
     goTo,
     setOpenInfo,
-    setMenu,
     infoMessage,
     setSubMenu,
     openInfo,
+    setState,
   } = props;
 
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -68,21 +58,21 @@ export function HomeMenu(props: IHomeMenuProps) {
         color="inherit"
         onClick={() => {
           if (useCookies.getCookie("newgame")) {
-            setOpenDialog(true);
+            setState(true, setOpenDialog);
           } else {
             goTo("newgame");
           }
         }}
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(
+          setState(true, setOpenInfo);
+          setState(
             translationState.translation[
               "Start a new game and discover my life"
             ],
             setInfoMessage
           );
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
       >
         {translationState.translation["NewGame"]}
       </Button>
@@ -93,13 +83,10 @@ export function HomeMenu(props: IHomeMenuProps) {
         color="inherit"
         onClick={() => goTo("aboutme")}
         onMouseOver={async () => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(
-            translationState.translation["Check my CV"],
-            setInfoMessage
-          );
+          setState(true, setOpenInfo);
+          setState(translationState.translation["Check my CV"], setInfoMessage);
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
       >
         {translationState.translation["AboutMe"]}
       </Button>
@@ -109,13 +96,13 @@ export function HomeMenu(props: IHomeMenuProps) {
         color="inherit"
         onClick={() => goTo("contact")}
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(
+          setState(true, setOpenInfo);
+          setState(
             translationState.translation["Discover how to contact me"],
             setInfoMessage
           );
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
       >
         {translationState.translation["Contact"]}
       </Button>
@@ -125,13 +112,13 @@ export function HomeMenu(props: IHomeMenuProps) {
         color="inherit"
         onClick={() => goTo("option")}
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(
+          setState(true, setOpenInfo);
+          setState(
             translationState.translation["Change configuration"],
             setInfoMessage
           );
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
       >
         {translationState.translation["Options"]}
       </Button>
@@ -140,16 +127,16 @@ export function HomeMenu(props: IHomeMenuProps) {
         disableRipple
         color="inherit"
         onMouseOver={() => {
-          setSnackbar(true, setOpenInfo);
-          setMessage(
+          setState(true, setOpenInfo);
+          setState(
             translationState.translation["Go back to Start Menu"],
             setInfoMessage
           );
         }}
-        onMouseLeave={() => setSnackbar(false, setOpenInfo)}
+        onMouseLeave={() => setState(false, setOpenInfo)}
         onClick={() => {
-          setMenu(false, setSubMenu);
-          setSnackbar(false, setOpenInfo);
+          setState(false, setSubMenu);
+          setState(false, setOpenInfo);
           useCookies.removeCookie("start");
         }}
       >
@@ -162,7 +149,12 @@ export function HomeMenu(props: IHomeMenuProps) {
         message={infoMessage}
         color={"inherit"}
       />
-      <NewGameCreation open={openDialog} setOpen={setOpenDialog} goTo={goTo} />
+      <NewGameCreation
+        open={openDialog}
+        setState={setState}
+        setOpenDialog={setOpenDialog}
+        goTo={goTo}
+      />
     </React.Fragment>
   );
 }

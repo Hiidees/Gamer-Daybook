@@ -8,10 +8,16 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import SupportedLangugesEnum from "../../../Domains/Enums/AppTranslationEnums";
-import { ListButtonLanguage } from "../../Portables/Styles/ListStyle";
+import {
+  ListButtonLanguage,
+  ListChooseLanguage,
+} from "../../Portables/Styles/ListStyle";
 import useCookies from "../../../Hooks/useCookies";
 import { AppbarGoBack } from "../../Utils/Appbar/AppbarGoBack";
 import { MyHelmet } from "../../Utils/Helmet/MyHelmet";
+import { BoxHeight } from "../../Portables/Styles/BoxStyle";
+import { StackChooseLanguage } from "../../Portables/Styles/StackStyle";
+import { TypographyChooseLanguage } from "../../Portables/Styles/TypographyStyle";
 
 export interface IChooseLanguageProps {
   resizeListener: (height: number, setHeight: (height: number) => void) => void;
@@ -38,21 +44,21 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
         </React.Fragment>
       )}
       <Container maxWidth="xs">
-        <Box
+        <BoxHeight
           display="flex"
           alignItems="center"
           justifyContent="center"
-          sx={{ height: height - 100 }}
+          myheight={height - 100}
         >
-          <Stack spacing={2} sx={{ width: "100%" }}>
+          <Stack spacing={2} sx={StackChooseLanguage}>
             <Typography
               variant="h1"
               textAlign={"center"}
-              sx={{ fontSize: "35px" }}
+              sx={TypographyChooseLanguage}
             >
               {translationState.translation["Choose the language"]}
             </Typography>
-            <List sx={{ justifyContent: "center" }}>
+            <List sx={ListChooseLanguage}>
               {Language.map((language) => (
                 <ListItem
                   button
@@ -77,7 +83,7 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
               ))}
             </List>
           </Stack>
-        </Box>
+        </BoxHeight>
       </Container>
     </React.Fragment>
   );
