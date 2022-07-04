@@ -1,0 +1,52 @@
+name: Production Release
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*.*.*' ]
+    paths-ignore:
+      - '.github/workflows/**'
+env:
+  ENVIRONMENT: production
+  APPNAME: production-mc-app 
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Heroku login credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+        
+      - name: Login to Heroku Container registry
+        run: heroku container:login 
+        
+      - name: Build and push
+        run: |
+          docker build -t registry.heroku.com/$APPNAME/web:latest . --build-arg ENVIRONMENT=$ENVIRONMENT
+          docker push registry.heroku.com/$APPNAME/web:latest
+        
+      - name: Release
+        run: heroku container:release -a $APPNAME web 
