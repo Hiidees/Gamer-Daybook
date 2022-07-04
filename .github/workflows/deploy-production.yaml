@@ -12,7 +12,6 @@ on:
     paths-ignore:
       - '.github/workflows/**'
 env:
-  ENVIRONMENT: production
   APPNAME: production-mc-app 
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
@@ -45,7 +44,7 @@ jobs:
         
       - name: Build and push
         run: |
-          docker build -t registry.heroku.com/$APPNAME/web:latest . --build-arg ENVIRONMENT=$ENVIRONMENT
+          docker build -t registry.heroku.com/$APPNAME/web:latest . 
           docker push registry.heroku.com/$APPNAME/web:latest
         
       - name: Release
