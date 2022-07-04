@@ -2,7 +2,7 @@ FROM node:18.1.0 AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.lock ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
