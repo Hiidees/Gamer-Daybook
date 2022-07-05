@@ -1,6 +1,7 @@
 import HttpServicesAdapter from "../adapters/HttpServicesAdapter";
 
 export default class EmailHelper {
+  
   private readonly _adapter = new HttpServicesAdapter();
 
   public async sendEmailAsync(
