@@ -90,6 +90,7 @@ export function HomeMenu(props: IHomeMenuProps) {
       >
         {translationState.translation["AboutMe"]}
       </Button>
+
       <Button
         sx={ButtonMenuStyle}
         disableRipple

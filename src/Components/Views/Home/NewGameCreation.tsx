@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import { PaperDialog } from "../../Portables/Styles/PaperStyle";
 import { ButtonNewGameCreationStyle } from "../../Portables/Styles/ButtonStyle";
 import { DialogTitleNewGame } from "../../Portables/Styles/TypographyStyle";
+import useAppTranslation from "../../../Hooks/useAppTranslation";
 
 export interface INewGameCreationProps {
   setState: (arg: any, changeState: (arg: any) => void) => void;
@@ -15,6 +16,7 @@ export interface INewGameCreationProps {
 
 export function NewGameCreation(props: INewGameCreationProps) {
   const { open, setOpenDialog, goTo, setState } = props;
+  const translationState = useAppTranslation();
   const handleClose = () => {
     setState(false, setOpenDialog);
   };
@@ -27,17 +29,17 @@ export function NewGameCreation(props: INewGameCreationProps) {
       }}
     >
       <DialogTitle sx={DialogTitleNewGame}>
-        Are you sure to start a new game?
+        {translationState.translation["Are you sure to start a new game?"]}
       </DialogTitle>
       <Stack direction={"row"} justifyContent="center" spacing={4}>
         <Button sx={ButtonNewGameCreationStyle} onClick={() => goTo("newgame")}>
-          Yes
+          {translationState.translation["Yes"]}
         </Button>
         <Button
           sx={ButtonNewGameCreationStyle}
           onClick={() => setState(false, setOpenDialog)}
         >
-          No
+          {translationState.translation["No"]}
         </Button>
       </Stack>
     </Dialog>

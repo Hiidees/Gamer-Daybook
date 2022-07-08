@@ -33,7 +33,7 @@ export function TypeWriter(props: ITypeWriterProps) {
       <Typewriter
         options={{
           autoStart: true,
-          delay: 2,
+          delay: 18,
           cursor: cursor,
           deleteSpeed: 100,
         }}

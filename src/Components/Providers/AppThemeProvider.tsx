@@ -1,7 +1,4 @@
-import createTheme, {
-  Theme,
-  ThemeOptions,
-} from "@mui/material/styles/createTheme";
+import createTheme, { ThemeOptions } from "@mui/material/styles/createTheme";
 import * as DarkTheme from "../../Stores/Data/Themes/DarkTheme.json";
 import * as LightTheme from "../../Stores/Data/Themes/LightTheme.json";
 import * as ParticlesOptionsDark from "../../Stores/Data/Particles/ParticlesOptionsDark.json";
@@ -71,7 +68,7 @@ function AppThemeProvider(props: React.PropsWithChildren<IProviderProps>) {
     }
     useCookies.setCookie(
       "theme",
-      themeKind == AppThemeKind.Dark ? "dark" : "light"
+      themeKind === AppThemeKind.Dark ? "dark" : "light"
     );
     const action = {
       type: AppThemeAction.SetTheme,

@@ -34,6 +34,10 @@
   "Go back": "Torna indietro",
   "Continue": "Prosegui",
   "Go back to menu": "Torna al menu principale",
-  "I'm ready!": "Sono pronto!"
+  "I'm ready!": "Sono pronto!",
+  "My game List": "I miei giochi",
+  "Are you sure to start a new game?" : "Sei sicuro di voler cominciare una nuova partita?",
+  "Yes" : "Si",
+  "No" : "No"
 
 }

@@ -1,4 +1,4 @@
-import { IconButton, IconButtonProps } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { keyframes } from "@mui/system";
 import { styled } from "@mui/material";
 
@@ -21,10 +21,10 @@ const colorLight = keyframes`
   to {background: black; color: white; opacity:0.5 }
 `;
 
-const colorChange = keyframes` 
+/* const colorChange = keyframes` 
     from  {  background-image: linear-gradient(45deg, red, blue) },
    
-    to { background-image: linear-gradient(45deg, violet, white) }`;
+    to { background-image: linear-gradient(45deg, violet, white) }`; */
 
 /* const shake = keyframes`
       0%  { transform: translate(1px, 1px)   rotate(0deg); background: transparent;},

@@ -1,6 +1,5 @@
 import { Interpolation } from "@emotion/react";
 import { Theme } from "@mui/material/styles/createTheme";
-import { ISourceOptions } from "tsparticles";
 import {
   AppThemeAction,
   AppThemeKind,

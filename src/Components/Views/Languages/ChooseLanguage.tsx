@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -66,7 +65,7 @@ export function ChooseLanguage(props: IChooseLanguageProps) {
                   key={language}
                   onClick={() => {
                     translationState.updateTranslation(
-                      language == "Italiano"
+                      language === "Italiano"
                         ? SupportedLangugesEnum.It
                         : SupportedLangugesEnum.En
                     );

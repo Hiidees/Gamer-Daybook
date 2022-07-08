@@ -7,19 +7,6 @@ export function HomeController() {
   function setState(arg: any, changeState: (arg: any) => void) {
     changeState(arg);
   }
-  function setSnackbar(
-    bool: boolean,
-    openSnackbarInfo: (bool: boolean) => void
-  ) {
-    openSnackbarInfo(bool);
-  }
-
-  function setMessage(
-    message: string,
-    setInfoMessage: (message: string) => void
-  ) {
-    setInfoMessage(message);
-  }
 
   function goTo(path: string) {
     navigate("/" + path);
@@ -29,18 +16,7 @@ export function HomeController() {
     setHeight(height);
   }
 
-  function setMenu(bool: boolean, openMenu: (bool: boolean) => void) {
-    openMenu(bool);
-  }
-
   return (
-    <Home
-      setState={setState}
-      setSnackbar={setSnackbar}
-      resizeListener={resizeListener}
-      setMessage={setMessage}
-      goTo={goTo}
-      setMenu={setMenu}
-    />
+    <Home setState={setState} resizeListener={resizeListener} goTo={goTo} />
   );
 }

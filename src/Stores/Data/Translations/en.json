@@ -34,5 +34,9 @@
   "Go back": "Go back",
   "Continue": "Continue",
   "Go back to menu": "Go back to menu",
-  "I'm ready!": "I'm ready!"
+  "I'm ready!": "I'm ready!",
+  "My game List": "My game List",
+  "Are you sure to start a new game?" : "Are you sure to start a new game?",
+  "Yes" : "Yes",
+  "No" : "No"
 }

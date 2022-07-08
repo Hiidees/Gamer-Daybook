@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AboutMeController } from "./Components/Controllers/AboutMeController";
 import { ContactController } from "./Components/Controllers/ContactController";
 import { EasterEggController } from "./Components/Controllers/EasterEggController";

@@ -1,10 +1,8 @@
-import * as React from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import FormHelperText from "@mui/material/FormHelperText";
-import { FormTextHelperStyle } from "../../Portables/Styles/FormTextfieldStyle";
 import Stack from "@mui/material/Stack";
 
 interface IPageRating {
