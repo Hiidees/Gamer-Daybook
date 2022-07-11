@@ -3,7 +3,7 @@ import IEmailResponse from "../../Domains/Interfaces/IEmailResponse";
 //import IErrorResponse from "../Domains/Interfaces/IErrorResponse";
 
 export default class HttpServicesAdapter {
-  private readonly _baseUrl = "https://gamerdaybook-be.herokuapp.com/";
+  private readonly _baseUrl = "https://gamerdaybook-be.herokuapp.com";
   private readonly _specificAxios;
 
   public constructor() {
