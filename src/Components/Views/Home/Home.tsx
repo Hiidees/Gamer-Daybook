@@ -33,12 +33,14 @@ export function Home(props: IHome) {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          myheight={height}
+          myheight={height - 100}
         >
-          <Stack spacing={2}>
-            {!subMenu && !useCookies.getCookie("start") ? (
+          {!subMenu && !useCookies.getCookie("start") ? (
+            <Stack spacing={-5}>
               <Start setState={setState} setSubMenu={setSubMenu} />
-            ) : (
+            </Stack>
+          ) : (
+            <Stack spacing={2}>
               <HomeMenu
                 setState={setState}
                 goTo={goTo}
@@ -48,8 +50,8 @@ export function Home(props: IHome) {
                 setSubMenu={setSubMenu}
                 openInfo={openInfo}
               />
-            )}
-          </Stack>
+            </Stack>
+          )}
         </BoxHeight>
       </Container>
     </React.Fragment>

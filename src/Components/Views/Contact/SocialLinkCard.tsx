@@ -23,7 +23,12 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
   const translationState = useAppTranslation();
   return (
     <Card sx={CardStyle} elevation={0}>
-      <CardMedia component="img" sx={CardMediaStyle} image="/icon.png" />
+      <CardMedia
+        component="img"
+        sx={CardMediaStyle}
+        image="/1A.png"
+        sizes="large"
+      />
       <CardContent>
         <Typography
           gutterBottom

@@ -9,7 +9,7 @@ import Favicon from "react-favicon";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Favicon url="./icon.png" iconSize={300} />
+    <Favicon url="./4A.png" iconSize={1000} />
     <AppThemeProvider>
       <CssBaseline />
       <AppTranslationProvider>

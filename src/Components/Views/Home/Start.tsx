@@ -1,10 +1,9 @@
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { ButtonStartStyle } from "../../Portables/Styles/ButtonStyle";
-import { TypographyMenu } from "../../Portables/Styles/TypographyStyle";
 import useCookies from "../../../Hooks/useCookies";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
+import CardMedia from "@mui/material/CardMedia";
 
 export interface IStartProps {
   setState: (arg: any, changeState: (arg: any) => void) => void;
@@ -17,14 +16,19 @@ export default function Start(props: IStartProps) {
 
   return (
     <React.Fragment>
-      <Typography
+      {/* <Typography
         variant="h1"
         sx={TypographyMenu}
         textAlign={"center"}
         color="inherit"
       >
         My gamer daybook
-      </Typography>
+      </Typography> */}
+      <CardMedia
+        component="img"
+        image="/2B.png"
+        sx={{ width: "60%", margin: "0px auto" }}
+      />
       <Button
         sx={ButtonStartStyle}
         disableRipple

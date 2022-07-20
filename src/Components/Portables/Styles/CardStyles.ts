@@ -12,7 +12,7 @@ export const CardStyle = {
 } as const;
 
 export const CardMediaStyle = {
-   width: "30%", 
+   width: "80%", 
    margin: "0px auto"
 } as const;
 
