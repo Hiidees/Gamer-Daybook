@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MC Site",
+  "name": "",
   "icons": [
     {
-      "src": "4B.ico",
+      "src": "favicon.ico",
       "sizes": "64x64",
       "type": "image/x-icon"
     }
