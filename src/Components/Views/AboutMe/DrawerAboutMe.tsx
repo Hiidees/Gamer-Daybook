@@ -61,7 +61,7 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
                 : ButtonDisabledDarkStyle
             }
           >
-            Prova 1
+            My Studies
           </Button>
           <Button
             variant="text"
@@ -85,7 +85,7 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
                 : ButtonDisabledDarkStyle
             }
           >
-            Prova 2
+            Developer Skills
           </Button>
           <Button
             variant="text"
@@ -109,7 +109,31 @@ export function DrawerAboutMe(props: IDrawerAboutMeProps) {
                 : ButtonDisabledDarkStyle
             }
           >
-            Prova 3
+            Skills Learning
+          </Button>
+          <Button
+            variant="text"
+            color="inherit"
+            disabled={disable === DisableKey.disableFour ? true : false}
+            disableRipple
+            onMouseOver={() => {
+              !disableHover && setState(DisableKey.disableFour, setVisibility);
+            }}
+            onMouseLeave={() => {
+              !disableHover && setState(DisableKey.default, setVisibility);
+            }}
+            onClick={() => {
+              setState(DisableKey.disableFour, setDisable);
+              setState(DisableKey.disableFour, setVisibility);
+              setState(true, setDisableHover);
+            }}
+            sx={
+              themeUIStore.themeKind === AppThemeKind.Light
+                ? ButtonDisabledLightStyle
+                : ButtonDisabledDarkStyle
+            }
+          >
+            Prova 4
           </Button>
         </Stack>
       </Slide>

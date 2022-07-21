@@ -51,6 +51,7 @@ export function AboutMe(props: IAboutMeProps) {
               myheight={height - 100}
             >
               <TypographysDesktop
+                setState={setState}
                 disable={disable}
                 visibility={visibility}
                 height={height}

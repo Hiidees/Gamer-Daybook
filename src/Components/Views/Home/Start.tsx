@@ -4,6 +4,7 @@ import { ButtonStartStyle } from "../../Portables/Styles/ButtonStyle";
 import useCookies from "../../../Hooks/useCookies";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
 
 export interface IStartProps {
   setState: (arg: any, changeState: (arg: any) => void) => void;
@@ -24,11 +25,14 @@ export default function Start(props: IStartProps) {
       >
         My gamer daybook
       </Typography> */}
-      <CardMedia
-        component="img"
-        image="/2B.png"
-        sx={{ width: "60%", margin: "0px auto" }}
-      />
+      <Box width={"100%"} height={"80%"}>
+        <CardMedia
+          component="img"
+          image="/2B.png"
+          sx={{ width: { md: "70%", sm: "100%" }, margin: "0px auto" }}
+        />
+      </Box>
+
       <Button
         sx={ButtonStartStyle}
         disableRipple

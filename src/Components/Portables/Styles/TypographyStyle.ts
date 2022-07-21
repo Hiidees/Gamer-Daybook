@@ -23,6 +23,7 @@ export const TypographyAboutMe = {
   textAlign: "center",
   fontSize: 16,
   marginLeft: 2, 
+  marginBottom: 3,
   marginTop: 3,
   animation: `${blink} 2s linear`,
 } as const;

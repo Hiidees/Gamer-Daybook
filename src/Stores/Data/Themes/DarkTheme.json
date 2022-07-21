@@ -14,7 +14,7 @@
   "typography": {
     "allVariants": {
       "fontFamily": "Syne Mono",
-      "fontSize": 25
+      "fontSize": 20
     }
   },
   "components":{

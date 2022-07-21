@@ -15,6 +15,7 @@ import {
   CardMediaStyle,
   CardActionStyle,
 } from "../../Portables/Styles/CardStyles";
+import Box from "@mui/material/Box";
 import Slide from "@mui/material/Slide";
 import useAppTranslation from "../../../Hooks/useAppTranslation";
 export interface ISocialLinkCardProps {}
@@ -23,12 +24,15 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
   const translationState = useAppTranslation();
   return (
     <Card sx={CardStyle} elevation={0}>
-      <CardMedia
-        component="img"
-        sx={CardMediaStyle}
-        image="/1A.png"
-        sizes="large"
-      />
+      <Box width={"100%"} height={"80%"}>
+        <CardMedia
+          component="img"
+          sx={CardMediaStyle}
+          image="/1A.png"
+          sizes="large"
+        />
+      </Box>
+
       <CardContent>
         <Typography
           gutterBottom

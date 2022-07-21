@@ -5,15 +5,18 @@ import { DisableKey } from "../../../Domains/Enums/DisableKeyEnums";
 import { TypographyAboutMe } from "../../Portables/Styles/TypographyStyle";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import { DeveloperSkills } from "./DeveloperSkills";
+import { LearningSkills } from "./LearningSkills";
 
 export interface ITypographysDesktopProps {
   disable: DisableKey;
   visibility: DisableKey;
   height: number;
+  setState: (arg: any, changeState: (arg: any) => void) => void;
 }
 
 export function TypographysDesktop(props: ITypographysDesktopProps) {
-  const { disable, visibility, height } = props;
+  const { disable, visibility, height, setState } = props;
   return (
     <React.Fragment>
       <Container maxWidth="sm">
@@ -57,44 +60,10 @@ export function TypographysDesktop(props: ITypographysDesktopProps) {
           )}
 
           {(disable === DisableKey.disableTwo ||
-            visibility === DisableKey.disableTwo) && (
-            <Typography variant="body2" color="inherit" sx={TypographyAboutMe}>
-              Curabitur eleifend ex eu feugiat iaculis. Ut volutpat, lectus id
-              semper scelerisque, ante mauris accumsan ipsum, eget dapibus quam
-              augue sed ante. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nunc vitae consectetur mi. Integer et ultricies odio, sit
-              amet efficitur eros. In hac habitasse platea dictumst. Aliquam
-              sodales, mauris nec rhoncus commodo, ligula mauris dignissim orci,
-              vel volutpat turpis ex vitae lacus. Duis feugiat eros eget nunc
-              lacinia aliquet. Aenean iaculis malesuada sapien sed pulvinar.
-              Nulla mattis non mauris vel condimentum. Cras tellus enim, finibus
-              vitae eleifend quis, rutrum quis nunc. Vestibulum laoreet odio id
-              augue lobortis cursus. Maecenas ullamcorper eget nunc quis
-              tincidunt. In enim arcu, mollis id laoreet in, fringilla id
-              sapien. Cras dapibus bibendum purus, ut semper urna malesuada ac.
-            </Typography>
-          )}
+            visibility === DisableKey.disableTwo) && <DeveloperSkills />}
 
           {(disable === DisableKey.disableThree ||
-            visibility === DisableKey.disableThree) && (
-            <Typography variant="body2" color="inherit" sx={TypographyAboutMe}>
-              Donec neque ligula, laoreet at elit a, efficitur sollicitudin
-              quam. Sed bibendum erat congue lorem ornare maximus. Nam accumsan
-              nulla non nibh feugiat tristique non quis nibh. In lacus velit,
-              gravida at venenatis sed, imperdiet id ex. Proin sagittis tellus
-              ut urna tincidunt, eget condimentum augue semper. Nam aliquam
-              neque in ex rhoncus, sit amet iaculis lorem luctus. In pharetra,
-              magna sit amet blandit rhoncus, leo arcu ornare est, vitae
-              dignissim est diam non leo. Pellentesque non augue vel mi faucibus
-              maximus. Phasellus lobortis neque id purus varius placerat et id
-              est. Aliquam accumsan mollis velit in fringilla. Morbi at urna
-              laoreet, sagittis tortor sit amet, blandit ante. Pellentesque
-              blandit metus sed felis commodo commodo. In interdum tincidunt
-              neque imperdiet ornare. Aenean id diam pretium, aliquam quam eget,
-              sodales nulla. Aenean eu facilisis mauris. Integer consequat
-              ornare massa, a ultricies ipsum rhoncus vel.
-            </Typography>
-          )}
+            visibility === DisableKey.disableThree) && <LearningSkills />}
         </Box>
       </Container>
     </React.Fragment>
