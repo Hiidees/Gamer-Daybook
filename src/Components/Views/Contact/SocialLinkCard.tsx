@@ -49,7 +49,7 @@ export function SocialLinkCard(props: ISocialLinkCardProps) {
             <SocialButton
               aria-label="github"
               disableRipple
-              mycolor="#ffda00"
+              mycolor="#515150"
               size="medium"
               onClick={() => window.open("https://github.com/Hiidees")}
             >

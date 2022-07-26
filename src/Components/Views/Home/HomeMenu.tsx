@@ -134,7 +134,7 @@ export function HomeMenu(props: IHomeMenuProps) {
             setInfoMessage
           );
         }}
-        onMouseLeave={() => setState(false, setOpenInfo)}
+        onMouseOut={() => setState(false, setOpenInfo)}
         onClick={() => {
           setState(false, setSubMenu);
           setState(false, setOpenInfo);

@@ -2,6 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import * as React from "react";
 import { AlertSnackbar } from "../../Portables/Styles/AlertStyles";
 import { SnackbarInfoStyle } from "../../Portables/Styles/SnackbarStyle";
+import { TypeWriter } from "../TypeWriter/TypeWriter";
 
 export interface ISnackbarInfoProps {
   vertical: "top" | "bottom";
@@ -22,6 +23,12 @@ export function SnackbarInfo(props: ISnackbarInfoProps) {
         open={openInfo}
       >
         <AlertSnackbar icon={false} mycolor={color}>
+          {/* <TypeWriter
+            typewriterMessage1={message}
+            typewriterMessage2=""
+            cursor="|"
+            initialPause={0}
+          /> */}
           {message}
         </AlertSnackbar>
       </Snackbar>

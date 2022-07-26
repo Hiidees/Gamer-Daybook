@@ -16,15 +16,12 @@ export function TypographysMobile(props: ITypographysMobileProps) {
       <Container maxWidth="sm">
         <Box display="flex" alignItems="center" justifyContent="center">
           <Stack>
-            <Slide direction="down" timeout={2000} in={true}>
-              <Typography
-                variant="body2"
-                color="inherit"
-                sx={TypographyAboutMe}
-              >
-                Default testo di prova
-              </Typography>
-            </Slide>
+            <Typography variant="body2" color="inherit" sx={TypographyAboutMe}>
+              In questa sezione troverai informazioni riguardo la mia formazione
+              scolastica, universitaria e in campo lavorativo. <br />
+              Inoltre vi è una sezione su quello che sto cercando di apprendere
+              al momento per espandere le mie conoscenze.
+            </Typography>
             <Typography variant="body2" color="inherit" sx={TypographyAboutMe}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               euismod enim sed semper ultrices. Donec magna augue, bibendum eu

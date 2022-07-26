@@ -4,6 +4,8 @@ import Stack from "@mui/material/Stack";
 import Icon from "@mui/material/Icon";
 import Typography from "@mui/material/Typography";
 import { TypographyAboutMe } from "../../Portables/Styles/TypographyStyle";
+import Tooltip from "@mui/material/Tooltip";
+import { IconLearningSkills } from "../../Portables/Styles/IconStyles";
 
 export interface ILearningSkillsProps {}
 
@@ -41,25 +43,31 @@ export function LearningSkills(props: ILearningSkillsProps) {
         <Stack direction={"row"} spacing={7} justifyContent={"center"}>
           <GrowFunction
             children={
-              <Icon sx={{ fontSize: { md: "60px", xs: "40px" } }}>
-                <img alt="skills" src="/Icons/cplusplus.svg" />
-              </Icon>
+              <Tooltip title="C++">
+                <Icon sx={IconLearningSkills}>
+                  <img alt="skills" src="/Icons/cplusplus.svg" />
+                </Icon>
+              </Tooltip>
             }
             timeoutMultiplier={1}
           />
           <GrowFunction
             children={
-              <Icon sx={{ fontSize: { md: "60px", xs: "40px" } }}>
-                <img alt="skills" src="/Icons/csharp.svg" />
-              </Icon>
+              <Tooltip title="C#">
+                <Icon sx={IconLearningSkills}>
+                  <img alt="skills" src="/Icons/csharp.svg" />
+                </Icon>
+              </Tooltip>
             }
             timeoutMultiplier={2}
           />
           <GrowFunction
             children={
-              <Icon sx={{ fontSize: { md: "60px", xs: "40px" } }}>
-                <img alt="skills" src="/Icons/java.svg" />
-              </Icon>
+              <Tooltip title="Java">
+                <Icon sx={IconLearningSkills}>
+                  <img alt="skills" src="/Icons/java.svg" />
+                </Icon>
+              </Tooltip>
             }
             timeoutMultiplier={3}
           />

@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { DeveloperSkills } from "./DeveloperSkills";
 import { LearningSkills } from "./LearningSkills";
+import Collapse from "@mui/material/Collapse";
 
 export interface ITypographysDesktopProps {
   disable: DisableKey;
@@ -28,15 +29,20 @@ export function TypographysDesktop(props: ITypographysDesktopProps) {
         >
           {visibility === DisableKey.default && (
             <React.Fragment>
-              <Slide direction="down" timeout={2000} in={true}>
+              <Collapse orientation="vertical" in={true}>
                 <Typography
                   variant="body2"
                   color="inherit"
                   sx={TypographyAboutMe}
                 >
-                  Default testo di prova
+                  In questa sezione troverai informazioni riguardo la mia
+                  formazione scolastica, universitaria e in campo lavorativo.
+                  <br />
+                  <br />
+                  Inoltre vi è una sezione su quello che sto cercando di
+                  apprendere al momento per espandere le mie conoscenze.
                 </Typography>
-              </Slide>
+              </Collapse>
             </React.Fragment>
           )}
           {(disable === DisableKey.disableOne ||
